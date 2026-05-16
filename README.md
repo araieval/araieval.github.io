@@ -1,8 +1,8 @@
-# ArGuard GitHub Pages Site
+# ArAIEval GitHub Pages Site
 
-This repository hosts the ArGuard shared task website at <https://araieval.github.io/>.
+This repository hosts the ArAIEval shared task archive at <https://araieval.github.io/>.
 
-ArGuard is the ArabicNLP 2026 shared task on harmful content detection in Arabic memes and LLM prompts.
+The site lists ArAIEval shared tasks organized over the years and links to task websites, GitHub mirrors, and legacy archives.
 
 ## Local Preview
 

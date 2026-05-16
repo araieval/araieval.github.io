@@ -179,7 +179,7 @@ p {
   height: 72vh;
   max-height: 760px;
   overflow: hidden;
-  background-image: url("../images/arguard-hero.png");
+  background-image: url("../images/araieval-overview.png");
   background-size: cover;
   background-position: center;
 }
@@ -187,7 +187,12 @@ p {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 253, 248, 0.72);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 253, 248, 0.92) 0%,
+    rgba(255, 253, 248, 0.88) 42%,
+    rgba(255, 253, 248, 0.72) 100%
+  );
 }
 
 .hero-content {
@@ -225,7 +230,7 @@ p {
 }
 
 .hero-copy {
-  max-width: 650px;
+  max-width: 570px;
   margin-bottom: 30px;
   color: #39444a;
   font-size: 20px;
@@ -431,6 +436,82 @@ p {
   padding-top: 18px;
   border-top: 1px solid var(--line);
   font-size: 15px;
+}
+
+.task-list {
+  display: grid;
+  gap: 18px;
+}
+
+.task-card {
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: 28px;
+  padding: 26px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--teal);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.task-card.current {
+  border-left-color: var(--blue);
+}
+
+.task-year {
+  color: var(--ink);
+  font-size: 34px;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.task-venue {
+  margin-bottom: 8px;
+  color: var(--teal-dark);
+  font-size: 13px;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.task-body h3 {
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.task-body p:not(.task-venue) {
+  color: #405058;
+}
+
+.task-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.task-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  color: var(--ink);
+  background: #eef7f5;
+  border: 1px solid #b9ddd7;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.task-links a:hover,
+.task-links a:focus-visible {
+  color: var(--paper);
+  background: var(--teal);
+  outline: 3px solid rgba(15, 118, 110, 0.18);
 }
 
 .table-grid {
@@ -717,6 +798,10 @@ tr:last-child td {
     background-position: left center;
   }
 
+  .hero-overlay {
+    background: rgba(255, 253, 248, 0.94);
+  }
+
   .hero-content {
     padding: 56px 0 48px;
   }
@@ -745,6 +830,11 @@ tr:last-child td {
   .resource-grid,
   .organizer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .task-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .timeline-list li {
