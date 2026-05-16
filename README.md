@@ -2,7 +2,7 @@
 
 This repository hosts the ArAIEval shared task archive at <https://araieval.github.io/>.
 
-The site lists ArAIEval shared tasks organized over the years and links to task websites, GitHub mirrors, and legacy archives.
+The site lists ArAIEval shared tasks organized over the years and links to task websites, GitHub repositories, and legacy archives.
 
 ## Local Preview
 
