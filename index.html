@@ -1,53 +1,26 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ArAIEval | Arabic Shared Tasks</title>
-    <meta
-      name="description"
-      content="ArAIEval shared task archive for Arabic NLP, multimodal propaganda, disinformation, and content safety evaluation."
-    >
-    <meta property="og:title" content="ArAIEval | Arabic Shared Tasks">
-    <meta
-      property="og:description"
-      content="Shared tasks, datasets, baselines, and evaluation resources organized by ArAIEval."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://araieval.github.io/">
-    <meta property="og:image" content="https://araieval.github.io/assets/images/araieval-overview.png">
-    <meta name="theme-color" content="#0f766e">
-    <link rel="canonical" href="https://araieval.github.io/">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="assets/css/styles.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header">
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="ArAIEval home">
-          <img class="brand-mark" src="assets/images/logo.png" alt="" aria-hidden="true">
-          <span>
-            <strong>ArAIEval</strong>
-            <small>Arabic AI evaluation</small>
-          </span>
-        </a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
-          <span class="nav-toggle-line"></span>
-          <span class="nav-toggle-line"></span>
-          <span class="nav-toggle-line"></span>
-          <span class="visually-hidden">Toggle navigation</span>
-        </button>
-        <div class="nav-links" id="site-nav" data-nav-links>
-          <a href="#tasks">Tasks</a>
-          <!-- <a href="https://github.com/orgs/araieval/repositories">Repositories</a> -->
-          <a href="#contact">Contact</a>
-          <!-- <a href="https://github.com/araieval">GitHub</a> -->
-          <!-- <a href="https://araieval.gitlab.io/">Archive</a> -->
-        </div>
-      </nav>
-    </header>
+---
+layout: default
+title: ArAIEval | Arabic Shared Tasks
+description: ArAIEval shared task archive for Arabic NLP, multimodal propaganda, disinformation, and content safety evaluation.
+og_title: ArAIEval | Arabic Shared Tasks
+og_description: Shared tasks, datasets, baselines, and evaluation resources organized by ArAIEval.
+og_url: https://araieval.github.io/
+og_image: https://araieval.github.io/assets/images/araieval-overview.png
+canonical_url: https://araieval.github.io/
+favicon: /favicon.ico
+stylesheet: /assets/css/styles.css
+script: /assets/js/main.js
+brand_label: ArAIEval home
+brand_image: /assets/images/logo.png
+brand_title: ArAIEval
+brand_subtitle: Arabic AI evaluation
+nav:
+  - label: Tasks
+    url: "#tasks"
+  - label: Contact
+    url: "#contact"
+footer_text: "&copy; 2026 ArAIEval. Hosted on GitHub Pages."
+---
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
@@ -116,70 +89,21 @@
           </div>
 
           <div class="task-list">
-            <article class="task-card current">
-              <div class="task-year">2026</div>
+            {% for task in site.data.ArGuard2026.shared_tasks %}
+            <article class="task-card{% if task.current %} current{% endif %}">
+              <div class="task-year">{{ task.year }}</div>
               <div class="task-body">
-                <p class="task-venue">ArabicNLP 2026</p>
-                <h3>ArGuard: Harmful Content Detection in Arabic Memes and LLM Prompts</h3>
-                <p>
-                  A two-track shared task covering multimodal hateful meme understanding and harmful Arabic prompt
-                  detection for LLM safety evaluation.
-                </p>
+                <p class="task-venue">{{ task.venue }}</p>
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.description }}</p>
                 <div class="task-links">
-                  <a href="https://araieval.github.io/ArGuard2026/">Task site</a>
-                  <a href="https://github.com/araieval/ArGuard-2026">Repository</a>
+                  {% for link in task.links %}
+                  <a href="{{ link.url }}">{{ link.label }}</a>
+                  {% endfor %}
                 </div>
               </div>
             </article>
-
-            <article class="task-card">
-              <div class="task-year">2024</div>
-              <div class="task-body">
-                <p class="task-venue">ArabicNLP 2024</p>
-                <h3>ArAIEval: Propagandistic Techniques Detection in Unimodal and Multimodal Arabic Content</h3>
-                <p>
-                  Shared tasks for text span-level persuasion technique detection and multimodal propagandistic meme
-                  classification.
-                </p>
-                <div class="task-links">
-                  <a href="https://araieval.gitlab.io/">Task site</a>
-                  <a href="https://github.com/araieval/araieval_arabicnlp24">Repository</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="task-card">
-              <div class="task-year">2023</div>
-              <div class="task-body">
-                <p class="task-venue">ArabicNLP 2023</p>
-                <h3>ArAIEval: Persuasion Techniques and Disinformation Detection in Arabic Text</h3>
-                <p>
-                  Two-task evaluation covering persuasion technique detection in Arabic text and disinformation
-                  detection with binary and multiclass subtasks.
-                </p>
-                <div class="task-links">
-                  <a href="https://araieval.gitlab.io/2023/">Task archive</a>
-                  <a href="https://github.com/araieval/wanlp2023_araieval">Repository</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="task-card">
-              <div class="task-year">2022</div>
-              <div class="task-body">
-                <p class="task-venue">WANLP 2022</p>
-                <h3>Propaganda Detection in Arabic</h3>
-                <p>
-                  Shared task on identifying Arabic propaganda techniques in tweets, including multilabel technique
-                  classification and span-level technique detection.
-                </p>
-                <div class="task-links">
-                  <a href="https://sites.google.com/view/propaganda-detection-in-arabic/">Task archive</a>
-                  <a href="https://github.com/araieval/propaganda-detection">Repository</a>
-                  <a href="https://aclanthology.org/2022.wanlp-1.11/">Overview paper</a>
-                </div>
-              </div>
-            </article>
+            {% endfor %}
           </div>
         </div>
       </section>
@@ -201,14 +125,3 @@
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>&copy; 2026 ArAIEval. Hosted on GitHub Pages.</p>
-        <a href="#top">Back to top</a>
-      </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-  </body>
-</html>

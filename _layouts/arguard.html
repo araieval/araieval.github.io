@@ -1,0 +1,242 @@
+---
+layout: default
+---
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+          <h1 id="hero-title">{{ page.hero.title }}</h1>
+          <p class="hero-subtitle">{{ page.hero.subtitle }}</p>
+          <p class="hero-copy">{{ page.hero.copy }}</p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="{{ page.hero.primary_action.url }}">{{ page.hero.primary_action.label }}</a>
+            <a class="button secondary" href="{{ page.hero.secondary_action.url }}">{{ page.hero.secondary_action.label }}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band" id="overview" aria-labelledby="overview-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Overview</p>
+            <h2 id="overview-title">{{ page.overview.title }}</h2>
+          </div>
+          <div class="intro-grid">
+            {% for paragraph in page.overview.paragraphs %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+          </div>
+          <!-- <div class="metric-strip" aria-label="Task highlights">
+            <div>
+              <strong>2</strong>
+              <span>tracks</span>
+            </div>
+            <div>
+              <strong>5K</strong>
+              <span>Arabic memes</span>
+            </div>
+            <div>
+              <strong>25,071</strong>
+              <span>Arabic prompts</span>
+            </div>
+            <div>
+              <strong>Macro-F1</strong>
+              <span>official metric</span>
+            </div>
+          </div> -->
+        </div>
+      </section>
+
+      <section class="section" id="tasks" aria-labelledby="tasks-title">
+        <div class="section-inner">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Tasks</p>
+              <h2 id="tasks-title">Two complementary tracks</h2>
+            </div>
+            <p>{{ page.tasks_intro }}</p>
+          </div>
+
+          <div class="track-grid">
+            {% for track in site.data.ArGuard2026.tracks %}
+            <article class="track-card{% if track.accent %} accent{% endif %}">
+              <div class="track-kicker">{{ track.kicker }}</div>
+              <h3>{{ track.title }}</h3>
+              <p>{{ track.description }}</p>
+              <ul class="check-list">
+                {% for subtask in track.subtasks %}
+                <li><strong>{{ subtask.label }}:</strong> {{ subtask.text }}</li>
+                {% endfor %}
+              </ul>
+              <p class="tagline">{{ track.tagline }}</p>
+              <a class="button secondary track-detail-link" href="{{ track.detail_url | relative_url }}">Task Details</a>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section data-band" aria-labelledby="data-title">
+        <div class="section-inner">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Data</p>
+              <h2 id="data-title">Dataset summary</h2>
+            </div>
+            <p>{{ page.data_intro }}</p>
+          </div>
+
+          <div class="table-grid">
+            {% for table in site.data.ArGuard2026.datasets %}
+            <div class="table-panel">
+              <h3>{{ table.title }}</h3>
+              <div class="table-scroll" tabindex="0">
+                <table>
+                  <thead>
+                    <tr>
+                      {% for header in table.headers %}
+                      <th>{{ header }}</th>
+                      {% endfor %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in table.rows %}
+                    <tr>
+                      {% for cell in row %}
+                      <td>{{ cell }}</td>
+                      {% endfor %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <p>{{ table.note }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="timeline" aria-labelledby="timeline-title">
+        <div class="section-inner">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Timeline</p>
+              <h2 id="timeline-title">Important dates</h2>
+            </div>
+            <p>{{ page.timeline_intro }}</p>
+          </div>
+
+          <ol class="timeline-list">
+            {% for item in site.data.ArGuard2026.timeline %}
+            <li>
+              <time datetime="{{ item.datetime }}">{{ item.date }}</time>
+              <span>{{ item.text }}</span>
+            </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </section>
+
+      <!-- <section class="section evaluation-band" aria-labelledby="evaluation-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Evaluation</p>
+            <h2 id="evaluation-title">Submission setup and metrics</h2>
+          </div>
+          <div class="evaluation-grid">
+            <div>
+              <h3>Development phase</h3>
+              <p>
+                Participants use training and development data to build systems and submit predictions on a
+                dev-test set for leaderboard tracking.
+              </p>
+            </div>
+            <div>
+              <h3>Final evaluation phase</h3>
+              <p>
+                Participants submit outputs for the hidden test set. Official rankings are computed on the blind
+                test data.
+              </p>
+            </div>
+            <div>
+              <h3>Metrics</h3>
+              <p>
+                Macro-F1 is the official metric for all subtasks. Accuracy, macro-precision, macro-recall, and
+                weighted F1 will also be reported.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <section class="section" id="resources" aria-labelledby="resources-title">
+        <div class="section-inner">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Resources</p>
+              <h2 id="resources-title">Links for participants</h2>
+            </div>
+            <p>{{ page.resources_intro }}</p>
+          </div>
+
+          <div class="resource-grid">
+            {% for resource in site.data.ArGuard2026.resources %}
+            <a class="resource-link" href="{{ resource.url }}">
+              <span>{{ resource.label }}</span>
+              <strong>{{ resource.title }}</strong>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section organizer-band" id="organizers" aria-labelledby="organizers-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Organizers</p>
+            <h2 id="organizers-title">Task organizing team</h2>
+          </div>
+          <div class="organizer-grid">
+            {% for organizer in site.data.ArGuard2026.organizers %}
+            <article>
+              <h3>{{ organizer.name }}</h3>
+              <p>{{ organizer.affiliation }}</p>
+              {% if organizer.email %}
+              <p><a href="mailto:{{ organizer.email }}">{{ organizer.email }}</a></p>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      {% if page.acknowledgments %}
+      <section class="section acknowledgments-section" aria-labelledby="acknowledgments-title">
+        <div class="section-inner acknowledgments-inner">
+          <div>
+            <p class="eyebrow">Acknowledgments</p>
+            <h2 id="acknowledgments-title">{{ page.acknowledgments.title }}</h2>
+            <p>{{ page.acknowledgments.text }}</p>
+          </div>
+          <img src="{{ page.acknowledgments.logo_url | relative_url }}" alt="{{ page.acknowledgments.logo_alt }}" class="acknowledgments-logo">
+        </div>
+      </section>
+      {% endif %}
+
+      <section class="section contact-section" aria-labelledby="contact-title">
+        <div class="section-inner contact-inner">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">{{ page.contact.title }}</h2>
+            <p>{{ page.contact.text }}</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:araieval@googlegroups.com">Email Organizers</a>
+            <a class="button primary" href="https://join.slack.com/t/araieval/shared_invite/zt-20rzypxs7-LuHUsw8ltj7ylae9c4I7XQ">Slack</a>
+          </div>
+        </div>
+      </section>
+    </main>

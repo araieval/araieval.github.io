@@ -1,0 +1,23 @@
+- title: "Track A: fine-grained label assignments"
+  headers:
+    - Class
+    - Train
+    - Dev
+    - Test
+  rows:
+    - ["Hateful labels", "1,717", "263", "493"]
+    - ["Not hateful labels", "2,177", "312", "761"]
+    - ["Total label assignments", "3,894", "575", "1,254"]
+  note: Counts are label assignments because each meme may have more than one fine-grained label.
+
+- title: "Track B: prompt classification"
+  headers:
+    - Category
+    - Train
+    - Dev
+    - Test
+    - Total
+  rows:
+    - ["Safe", "2,789", "348", "350", "3,487"]
+    - ["Unsafe", "17,267", "2,158", "2,161", "21,586"]
+  note: The proposal reports 25,071 prompts overall; released data will be the authoritative source.

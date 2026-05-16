@@ -1,0 +1,50 @@
+- year: "2026"
+  current: true
+  venue: ArabicNLP 2026
+  title: "ArGuard: Harmful Content Detection in Arabic Memes and LLM Prompts"
+  description: >-
+    A two-track shared task covering multimodal hateful meme understanding and
+    harmful Arabic prompt detection for LLM safety evaluation.
+  links:
+    - label: Task site
+      url: https://araieval.github.io/ArGuard2026/
+    - label: Repository
+      url: https://github.com/araieval/ArGuard-2026
+
+- year: "2024"
+  venue: ArabicNLP 2024
+  title: "ArAIEval: Propagandistic Techniques Detection in Unimodal and Multimodal Arabic Content"
+  description: >-
+    Shared tasks for text span-level persuasion technique detection and
+    multimodal propagandistic meme classification.
+  links:
+    - label: Task site
+      url: https://araieval.gitlab.io/
+    - label: Repository
+      url: https://github.com/araieval/araieval_arabicnlp24
+
+- year: "2023"
+  venue: ArabicNLP 2023
+  title: "ArAIEval: Persuasion Techniques and Disinformation Detection in Arabic Text"
+  description: >-
+    Two-task evaluation covering persuasion technique detection in Arabic text
+    and disinformation detection with binary and multiclass subtasks.
+  links:
+    - label: Task archive
+      url: https://araieval.gitlab.io/2023/
+    - label: Repository
+      url: https://github.com/araieval/wanlp2023_araieval
+
+- year: "2022"
+  venue: WANLP 2022
+  title: Propaganda Detection in Arabic
+  description: >-
+    Shared task on identifying Arabic propaganda techniques in tweets, including
+    multilabel technique classification and span-level technique detection.
+  links:
+    - label: Task archive
+      url: https://sites.google.com/view/propaganda-detection-in-arabic/
+    - label: Repository
+      url: https://github.com/araieval/propaganda-detection
+    - label: Overview paper
+      url: https://aclanthology.org/2022.wanlp-1.11/

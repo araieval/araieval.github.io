@@ -2,15 +2,16 @@
 
 This repository hosts the ArAIEval shared task archive at <https://araieval.github.io/>.
 
-The site lists ArAIEval shared tasks organized over the years and links to task websites, GitHub repositories, and legacy archives.
+The site lists ArAIEval shared tasks organized over the years and links to task websites, GitHub repositories, and legacy archives. It uses Jekyll, matching the structure of the earlier ArAIEval GitLab Pages site.
 
 ## Local Preview
 
 ```bash
-python3 -m http.server 8000
+bundle install
+bundle exec jekyll serve
 ```
 
-Then open <http://localhost:8000/>.
+Then open <http://localhost:4000/>.
 
 ## Publishing
 

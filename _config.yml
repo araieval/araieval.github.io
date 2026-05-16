@@ -1,0 +1,15 @@
+title: ArAIEval
+description: Arabic AI Tasks Evaluation shared task archive.
+url: "https://araieval.github.io"
+baseurl: ""
+lang: en
+timezone: Europe/Madrid
+
+markdown: kramdown
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - README.md

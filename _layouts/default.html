@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% endif %}
+    <meta property="og:title" content="{{ page.og_title | default: page.title | default: site.title }}">
+    {% if page.og_description or page.description %}
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}">
+    {% endif %}
+    <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+    {% if page.og_url %}
+    <meta property="og:url" content="{{ page.og_url }}">
+    {% endif %}
+    {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image }}">
+    {% endif %}
+    <meta name="theme-color" content="{{ page.theme_color | default: '#0f766e' }}">
+    {% if page.canonical_url %}
+    <link rel="canonical" href="{{ page.canonical_url }}">
+    {% endif %}
+    <link rel="icon" href="{{ page.favicon | default: '/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ page.stylesheet | default: '/assets/css/styles.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    {% include site-header.html %}
+
+    {{ content }}
+
+    {% include site-footer.html %}
+
+    {% if page.script %}
+    <script src="{{ page.script | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>

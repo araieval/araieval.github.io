@@ -1,0 +1,32 @@
+- kicker: Track A
+  title: Multimodal Hateful Meme Detection
+  detail_url: /ArGuard2026/task1/
+  description: >-
+    Systems receive an Arabic meme image with extracted text and predict whether
+    the meme is hateful, then identify the fine-grained label set associated
+    with the content.
+  subtasks:
+    - label: A1
+      text: Hateful vs. Not Hateful classification.
+    - label: A2
+      text: Multi-label fine-grained category prediction.
+  tagline: >-
+    Labels include mocking, incitement, dehumanization, slurs, contempt,
+    inferiority, exclusion, stereotyping, extremism, threat, insults,
+    historical, humor, sarcasm, and other categories.
+
+- kicker: Track B
+  title: Textual Harmful Prompt Detection
+  detail_url: /ArGuard2026/task2/
+  accent: true
+  description: >-
+    Systems receive an Arabic prompt directed at an LLM and decide whether it is
+    safe or unsafe, then classify unsafe prompts by harm domain.
+  subtasks:
+    - label: B1
+      text: Safe vs. Unsafe prompt detection.
+    - label: B2
+      text: Harm category classification.
+  tagline: >-
+    Harm domains include self-harm, harm to others, harassment, adult content,
+    bullying, hate speech, and fraud or illegal activities.

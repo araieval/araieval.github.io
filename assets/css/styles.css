@@ -136,12 +136,64 @@ p {
   gap: 4px;
 }
 
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .nav-links a {
   padding: 10px 12px;
   color: var(--text);
   text-decoration: none;
   border-radius: 6px;
   font-size: 15px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-item.has-dropdown > .nav-link::after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-top: 2px;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-top: 5px solid currentColor;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 25;
+  display: grid;
+  min-width: 210px;
+  gap: 4px;
+  padding: 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.nav-dropdown a {
+  white-space: nowrap;
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-links a:hover,
@@ -740,6 +792,25 @@ tr:last-child td {
 
   .nav-links.is-open {
     display: flex;
+  }
+
+  .nav-item {
+    display: block;
+  }
+
+  .nav-dropdown {
+    position: static;
+    min-width: 0;
+    margin: 0 0 4px 12px;
+    padding: 0 0 0 8px;
+    background: transparent;
+    border: 0;
+    border-left: 2px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 
   .hero {

@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<main id="main">
+  <section class="task-page-hero" id="top" aria-labelledby="task-title">
+    <div class="section-inner">
+      <p class="eyebrow">{{ page.task_label }}</p>
+      <h1 id="task-title">{{ page.heading | default: page.title }}</h1>
+      {% if page.summary %}
+      <p>{{ page.summary }}</p>
+      {% endif %}
+      <div class="hero-actions" aria-label="Task links">
+        <a class="button primary" href="{{ '/ArGuard2026/' | relative_url }}">ArGuard Overview</a>
+        <a class="button secondary" href="{{ page.repository_url }}">Task Repository</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section task-page-section">
+    <div class="section-inner task-page-grid">
+      <aside class="task-page-toc" aria-label="Task page navigation">
+        <a href="#definition">Definition</a>
+        <a href="#subtasks">Subtasks</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#datasets">Datasets</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#submission">Submission</a>
+      </aside>
+      <article class="task-content">
+        {{ content }}
+      </article>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,37 @@
+<header class="site-header"{% if page.header_data %} data-header{% endif %}>
+  <nav class="nav-shell" aria-label="Primary navigation">
+    <a class="brand" href="{{ page.brand_url | default: '#top' }}" aria-label="{{ page.brand_label | default: site.title }}">
+      {% if page.brand_image %}
+      <img class="brand-mark" src="{{ page.brand_image | relative_url }}" alt="" aria-hidden="true">
+      {% else %}
+      <span class="brand-mark" aria-hidden="true"></span>
+      {% endif %}
+      <span>
+        <strong>{{ page.brand_title | default: site.title }}</strong>
+        {% if page.brand_subtitle %}
+        <small>{{ page.brand_subtitle }}</small>
+        {% endif %}
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="visually-hidden">Toggle navigation</span>
+    </button>
+    <div class="nav-links" id="site-nav" data-nav-links>
+      {% for item in page.nav %}
+      <div class="nav-item{% if item.children %} has-dropdown{% endif %}">
+        <a class="nav-link" href="{{ item.url }}">{{ item.label }}</a>
+        {% if item.children %}
+        <div class="nav-dropdown">
+          {% for child in item.children %}
+          <a href="{{ child.url }}">{{ child.label }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </nav>
+</header>
