@@ -923,3 +923,21 @@ tr:last-child td {
     flex-direction: column;
   }
 }
+
+/* Custom Table Classes */
+.subheader-row td {
+  background: rgba(15, 118, 110, 0.04);
+  font-weight: 700;
+  color: var(--teal);
+  text-align: center;
+  border-bottom: 2px solid var(--line);
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.total-row td {
+  background: #fdfbf7;
+  font-weight: 800;
+}
+td strong {
+  font-weight: 800;
+}
