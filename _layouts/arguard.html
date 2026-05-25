@@ -1,89 +1,97 @@
----
-layout: default
----
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% endif %}
+    <meta property="og:title" content="{{ page.og_title | default: page.title | default: site.title }}">
+    {% if page.og_description or page.description %}
+    <meta property="og:description" content="{{ page.og_description | default: page.description }}">
+    {% endif %}
+    <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+    {% if page.og_url %}
+    <meta property="og:url" content="{{ page.og_url }}">
+    {% endif %}
+    {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image }}">
+    {% endif %}
+    <meta name="theme-color" content="{{ page.theme_color | default: '#0f766e' }}">
+    {% if page.canonical_url %}
+    <link rel="canonical" href="{{ page.canonical_url }}">
+    {% endif %}
+    <link rel="icon" href="{{ page.favicon | default: '/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ page.stylesheet | default: '/assets/css/styles.css' | relative_url }}">
+    <style>
+      .subheader-row td {
+        background: rgba(15, 118, 110, 0.04);
+        font-weight: 700;
+        color: var(--teal, #0f766e);
+        text-align: center;
+        border-bottom: 2px solid var(--line, #e2e8f0);
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+      .total-row td {
+        background: #fdfbf7;
+        font-weight: 800;
+      }
+      td strong { font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    {% include site-header.html %}
+    {% include arguard-hero.html %}
 
     <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="hero-content">
-          <p class="eyebrow">{{ page.hero.eyebrow }}</p>
-          <h1 id="hero-title">{{ page.hero.title }}</h1>
-          <p class="hero-subtitle">{{ page.hero.subtitle }}</p>
-          <p class="hero-copy">{{ page.hero.copy }}</p>
-          <div class="hero-actions" aria-label="Primary links">
-            <a class="button primary" href="{{ page.hero.primary_action.url }}">{{ page.hero.primary_action.label }}</a>
-            <a class="button secondary" href="{{ page.hero.secondary_action.url }}">{{ page.hero.secondary_action.label }}</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section intro-band" id="overview" aria-labelledby="overview-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <p class="eyebrow">Overview</p>
-            <h2 id="overview-title">{{ page.overview.title }}</h2>
-          </div>
-          <div class="intro-grid">
-            {% for paragraph in page.overview.paragraphs %}
-            <p>{{ paragraph }}</p>
-            {% endfor %}
-          </div>
-          <!-- <div class="metric-strip" aria-label="Task highlights">
-            <div>
-              <strong>2</strong>
-              <span>tracks</span>
-            </div>
-            <div>
-              <strong>5K</strong>
-              <span>Arabic memes</span>
-            </div>
-            <div>
-              <strong>25,071</strong>
-              <span>Arabic prompts</span>
-            </div>
-            <div>
-              <strong>Macro-F1</strong>
-              <span>official metric</span>
-            </div>
-          </div> -->
-        </div>
-      </section>
-
-      <section class="section" id="tasks" aria-labelledby="tasks-title">
+      <section class="section" id="overview" aria-labelledby="overview-title">
         <div class="section-inner">
           <div class="section-heading split">
             <div>
-              <p class="eyebrow">Tasks</p>
-              <h2 id="tasks-title">Two complementary tracks</h2>
+              <p class="eyebrow">Overview</p>
+              <h2 id="overview-title">{{ page.overview.title }}</h2>
+            </div>
+            <div class="prose">
+              {% for p in page.overview.paragraphs %}
+              <p>{{ p }}</p>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band" id="tasks" aria-labelledby="tasks-title">
+        <div class="section-inner">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Task Tracks</p>
+              <h2 id="tasks-title">Two detection challenges</h2>
             </div>
             <p>{{ page.tasks_intro }}</p>
           </div>
 
           <div class="track-grid">
             {% for track in site.data.ArGuard2026.tracks %}
-            <article class="track-card{% if track.accent %} accent{% endif %}">
-              <div class="track-kicker">{{ track.kicker }}</div>
+            <article class="track-card">
               <h3>{{ track.title }}</h3>
               <p>{{ track.description }}</p>
-              <ul class="check-list">
-                {% for subtask in track.subtasks %}
-                <li><strong>{{ subtask.label }}:</strong> {{ subtask.text }}</li>
-                {% endfor %}
-              </ul>
-              <p class="tagline">{{ track.tagline }}</p>
-              <a class="button secondary track-detail-link" href="{{ track.detail_url | relative_url }}">Task Details</a>
+              <a class="button secondary" href="{{ track.url | relative_url }}">{{ track.link_label }}</a>
             </article>
             {% endfor %}
           </div>
         </div>
       </section>
 
-      <section class="section data-band" aria-labelledby="data-title">
+      <section class="section" id="data" aria-labelledby="data-title">
         <div class="section-inner">
           <div class="section-heading split">
             <div>
-              <p class="eyebrow">Data</p>
-              <h2 id="data-title">Dataset summary</h2>
+              <p class="eyebrow">Datasets</p>
+              <h2 id="data-title">Annotated splits</h2>
             </div>
             <p>{{ page.data_intro }}</p>
           </div>
@@ -103,11 +111,23 @@ layout: default
                   </thead>
                   <tbody>
                     {% for row in table.rows %}
-                    <tr>
-                      {% for cell in row %}
-                      <td>{{ cell }}</td>
-                      {% endfor %}
-                    </tr>
+                      {% if row[1] == "" and row[2] == "" %}
+                        <tr class="subheader-row">
+                          <td colspan="{{ table.headers.size }}">{{ row[0] | replace: '<em>', '' | replace: '</em>', '' | replace: '**', '' }}</td>
+                        </tr>
+                      {% elsif row[0] contains "Total" %}
+                        <tr class="total-row">
+                          {% for cell in row %}
+                          <td>{{ cell | replace: '<strong>', '' | replace: '</strong>', '' }}</td>
+                          {% endfor %}
+                        </tr>
+                      {% else %}
+                        <tr>
+                          {% for cell in row %}
+                          <td>{{ cell }}</td>
+                          {% endfor %}
+                        </tr>
+                      {% endif %}
                     {% endfor %}
                   </tbody>
                 </table>
@@ -131,112 +151,87 @@ layout: default
 
           <ol class="timeline-list">
             {% for item in site.data.ArGuard2026.timeline %}
-            <li>
+            <li class="timeline-item">
               <time datetime="{{ item.datetime }}">{{ item.date }}</time>
-              <span>{{ item.text }}</span>
+              <p>{{ item.text }}</p>
             </li>
             {% endfor %}
           </ol>
         </div>
       </section>
 
-      <!-- <section class="section evaluation-band" aria-labelledby="evaluation-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <p class="eyebrow">Evaluation</p>
-            <h2 id="evaluation-title">Submission setup and metrics</h2>
-          </div>
-          <div class="evaluation-grid">
-            <div>
-              <h3>Development phase</h3>
-              <p>
-                Participants use training and development data to build systems and submit predictions on a
-                dev-test set for leaderboard tracking.
-              </p>
-            </div>
-            <div>
-              <h3>Final evaluation phase</h3>
-              <p>
-                Participants submit outputs for the hidden test set. Official rankings are computed on the blind
-                test data.
-              </p>
-            </div>
-            <div>
-              <h3>Metrics</h3>
-              <p>
-                Macro-F1 is the official metric for all subtasks. Accuracy, macro-precision, macro-recall, and
-                weighted F1 will also be reported.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <section class="section" id="resources" aria-labelledby="resources-title">
+      <section class="section intro-band" id="resources" aria-labelledby="resources-title">
         <div class="section-inner">
           <div class="section-heading split">
             <div>
               <p class="eyebrow">Resources</p>
-              <h2 id="resources-title">Links for participants</h2>
+              <h2 id="resources-title">Data and tools</h2>
             </div>
             <p>{{ page.resources_intro }}</p>
           </div>
 
           <div class="resource-grid">
             {% for resource in site.data.ArGuard2026.resources %}
-            <a class="resource-link" href="{{ resource.url }}">
+            <a href="{{ resource.url }}" class="resource-card">
+              <p>{{ resource.description }}</p>
               <span>{{ resource.label }}</span>
-              <strong>{{ resource.title }}</strong>
             </a>
             {% endfor %}
           </div>
         </div>
       </section>
 
-      <section class="section organizer-band" id="organizers" aria-labelledby="organizers-title">
+      <section class="section" id="organizers" aria-labelledby="organizers-title">
         <div class="section-inner">
           <div class="section-heading">
             <p class="eyebrow">Organizers</p>
-            <h2 id="organizers-title">Task organizing team</h2>
+            <h2 id="organizers-title">ArGuard Committee</h2>
           </div>
+
           <div class="organizer-grid">
-            {% for organizer in site.data.ArGuard2026.organizers %}
-            <article>
-              <h3>{{ organizer.name }}</h3>
-              <p>{{ organizer.affiliation }}</p>
-              {% if organizer.email %}
-              <p><a href="mailto:{{ organizer.email }}">{{ organizer.email }}</a></p>
-              {% endif %}
-            </article>
+            {% for person in site.data.ArGuard2026.organizers %}
+            <div class="organizer-card">
+              <h3>{{ person.name }}</h3>
+              <p>{{ person.affiliation }}</p>
+            </div>
             {% endfor %}
           </div>
         </div>
       </section>
 
-      {% if page.acknowledgments %}
-      <section class="section acknowledgments-section" aria-labelledby="acknowledgments-title">
-        <div class="section-inner acknowledgments-inner">
-          <div>
-            <p class="eyebrow">Acknowledgments</p>
-            <h2 id="acknowledgments-title">{{ page.acknowledgments.title }}</h2>
-            <p>{{ page.acknowledgments.text }}</p>
-          </div>
-          <img src="{{ page.acknowledgments.logo_url | relative_url }}" alt="{{ page.acknowledgments.logo_alt }}" class="acknowledgments-logo">
-        </div>
-      </section>
-      {% endif %}
-
-      <section class="section contact-section" aria-labelledby="contact-title">
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
         <div class="section-inner contact-inner">
           <div>
-            <p class="eyebrow">Contact</p>
             <h2 id="contact-title">{{ page.contact.title }}</h2>
             <p>{{ page.contact.text }}</p>
           </div>
           <div class="contact-actions">
-            <a class="button primary" href="mailto:araieval@googlegroups.com">Email Organizers</a>
-            <a class="button primary" href="https://join.slack.com/t/araieval/shared_invite/zt-20rzypxs7-LuHUsw8ltj7ylae9c4I7XQ">Slack</a>
+            {% include site-actions.html secondary_url="https://join.slack.com/t/araieval/shared_invite/zt-20rzypxs7-LuHUsw8ltj7ylae9c4I7XQ" secondary_label="Join Slack" %}
           </div>
         </div>
       </section>
+
+      {% if page.acknowledgments %}
+      <section class="section" aria-labelledby="ack-title" style="padding-top: 0;">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2 id="ack-title">{{ page.acknowledgments.title }}</h2>
+          </div>
+          <div>
+            <p>{{ page.acknowledgments.text }}</p>
+            {% if page.acknowledgments.logo_url %}
+            <img src="{{ page.acknowledgments.logo_url | relative_url }}" alt="{{ page.acknowledgments.logo_alt }}" style="max-width: 200px; margin-top: 1rem; border-radius: 8px;">
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
     </main>
+
+    {% include site-footer.html %}
+
+    {% if page.script %}
+    <script src="{{ page.script | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>
