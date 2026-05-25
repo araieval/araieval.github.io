@@ -5,7 +5,7 @@
     - Dev
     - Test
   rows:
-    - ["**Hateful**", "", "", ""]
+    - ["<strong>Hateful</strong>", "", "", ""]
     - ["Mocking", "706", "90", "211"]
     - ["Incitement", "320", "51", "85"]
     - ["Dehumanization", "247", "42", "58"]
@@ -14,7 +14,7 @@
     - ["Inferiority", "57", "14", "32"]
     - ["Exclusion", "10", "4", "3"]
     - ["Other (Hateful)", "18", "2", "7"]
-    - ["**Not Hateful**", "", "", ""]
+    - ["<strong>Not Hateful</strong>", "", "", ""]
     - ["Sarcasm", "934", "126", "333"]
     - ["Humor", "863", "136", "332"]
     - ["Other (Not Hateful)", "380", "50", "96"]
@@ -28,10 +28,10 @@
     - Test
     - Total
   rows:
-    - ["**Subtask B1**", "", "", "", ""]
+    - ["<strong>Subtask B1</strong>", "", "", "", ""]
     - ["Safe", "2,789", "348", "350", "3,487"]
     - ["Unsafe", "17,267", "2,158", "2,161", "21,586"]
-    - ["**Subtask B2**", "", "", "", ""]
+    - ["<strong>Subtask B2</strong>", "", "", "", ""]
     - ["Self-Harm", "3,932", "491", "492", "4,915"]
     - ["Harming Others", "3,473", "434", "435", "4,342"]
     - ["Harassment", "2,574", "322", "322", "3,218"]
