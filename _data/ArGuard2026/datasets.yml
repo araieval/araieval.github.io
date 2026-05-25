@@ -5,10 +5,20 @@
     - Dev
     - Test
   rows:
-    - ["Hateful labels", "1,717", "263", "493"]
-    - ["Not hateful labels", "2,177", "312", "761"]
-    - ["Total label assignments", "3,894", "575", "1,254"]
-  note: Counts are label assignments because each meme may have more than one fine-grained label.
+    - ["**Hateful**", "", "", ""]
+    - ["Mocking", "706", "90", "211"]
+    - ["Incitement", "320", "51", "85"]
+    - ["Dehumanization", "247", "42", "58"]
+    - ["Slurs", "252", "42", "47"]
+    - ["Contempt", "107", "18", "50"]
+    - ["Inferiority", "57", "14", "32"]
+    - ["Exclusion", "10", "4", "3"]
+    - ["Other (Hateful)", "18", "2", "7"]
+    - ["**Not Hateful**", "", "", ""]
+    - ["Sarcasm", "934", "126", "333"]
+    - ["Humor", "863", "136", "332"]
+    - ["Other (Not Hateful)", "380", "50", "96"]
+  note: Distribution of fine-grained labels (multilabel) across the train, development, and test splits of the dataset (total 5K memes). The dataset includes both hateful and not hateful categories, with noticeable variation in frequency across subtypes.
 
 - title: "Track B: prompt classification"
   headers:
@@ -18,6 +28,15 @@
     - Test
     - Total
   rows:
+    - ["**Subtask B1**", "", "", "", ""]
     - ["Safe", "2,789", "348", "350", "3,487"]
     - ["Unsafe", "17,267", "2,158", "2,161", "21,586"]
-  note: The proposal reports 25,071 prompts overall; released data will be the authoritative source.
+    - ["**Subtask B2**", "", "", "", ""]
+    - ["Self-Harm", "3,932", "491", "492", "4,915"]
+    - ["Harming Others", "3,473", "434", "435", "4,342"]
+    - ["Harassment", "2,574", "322", "322", "3,218"]
+    - ["Fraud & Deception", "2,016", "252", "252", "2,520"]
+    - ["Bully", "1,734", "217", "217", "2,168"]
+    - ["Hate Speech", "1,078", "134", "135", "1,347"]
+    - ["Adult Content", "5,249", "656", "656", "6,561"]
+  note: Dataset distribution for (B1) safety classification and (B2) harmful prompt classification.

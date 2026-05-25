@@ -1,15 +1,27 @@
-- date: May 25, 2026
-  datetime: "2026-05-25"
-  text: Task website, training and development data, and evaluation scripts released.
+- date: August 1, 2026
+  datetime: "2026-08-01"
+  text: Registration deadline and beginning of the evaluation cycle (test sets release).
 
-- date: July 25, 2026
-  datetime: "2026-07-25"
-  text: Registration deadline and release of the blind test set.
+- date: August 6, 2026
+  datetime: "2026-08-06"
+  text: End of the evaluation cycle (run submission).
 
-- date: July 30, 2026
-  datetime: "2026-07-30"
-  text: Final submission deadline and release of final results.
+- date: August 8, 2026
+  datetime: "2026-08-08"
+  text: Release leaderboard.
 
-- date: August 22, 2026
-  datetime: "2026-08-22"
-  text: Camera-ready system description papers due.
+- date: August 18, 2026
+  datetime: "2026-08-18"
+  text: Shared task papers due date.
+
+- date: August 30, 2026
+  datetime: "2026-08-30"
+  text: Notification of acceptance.
+
+- date: September 10, 2026
+  datetime: "2026-09-10"
+  text: Camera-ready papers due.
+
+- date: October 24–29, 2026
+  datetime: "2026-10-24"
+  text: ArabicNLP conference.
