@@ -1,4 +1,4 @@
-# ArAIEval GitHub Pages Site 
+# ArAIEval GitHub Pages Site
 
 This repository hosts the ArAIEval shared task archive at <https://araieval.github.io/>.
 
