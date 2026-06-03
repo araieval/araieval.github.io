@@ -57,8 +57,8 @@ Fine-grained labels include mocking, incitement, dehumanization, slurs, contempt
 
 The CodaBench competitions for Task 1 are open for participation:
 
-- **Subtask 1A (Binary):** [codabench.org/competitions/16661](https://www.codabench.org/competitions/16661/)
-- **Subtask 1B (Fine-Grained):** [codabench.org/competitions/16660](https://www.codabench.org/competitions/16660/)
+- **Subtask 1A (Binary):** [codabench.org/competitions/16909](https://www.codabench.org/competitions/16909/)
+- **Subtask 1B (Fine-Grained):** [codabench.org/competitions/16910](https://www.codabench.org/competitions/16910/)
 
 ## Datasets
 
