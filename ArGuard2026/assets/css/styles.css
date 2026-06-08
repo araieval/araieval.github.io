@@ -617,32 +617,31 @@ tr:last-child td {
 }
 
 .timeline-list {
-  position: relative;
   display: grid;
-  gap: 16px;
-  padding: 0;
+  gap: 10px;
+  padding-left: 22px;
   margin: 0;
-  list-style: none;
+  list-style: disc;
 }
 
 .timeline-list li {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 24px;
-  padding: 22px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-left: 6px solid var(--teal);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  display: list-item;
+  padding-left: 2px;
+  color: #405058;
 }
 
 .timeline-list time {
+  display: inline;
   color: var(--ink);
   font-weight: 820;
 }
 
+.timeline-list time::after {
+  content: ": ";
+}
+
 .timeline-list span {
+  display: inline;
   color: #405058;
 }
 
@@ -1095,11 +1094,6 @@ tr:last-child td {
   .resource-grid,
   .organizer-grid {
     grid-template-columns: 1fr;
-  }
-
-  .timeline-list li {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 
   .button {
