@@ -55,19 +55,14 @@ Fine-grained labels include mocking, incitement, dehumanization, slurs, contempt
 
 ## Leaderboard
 
-The leaderboard will be linked here when the official submission platform is released.
+The CodaBench competitions for Task 1 are open for participation:
+
+- **Subtask 1A (Binary):** [codabench.org/competitions/16909](https://www.codabench.org/competitions/16909/)
+- **Subtask 1B (Fine-Grained):** [codabench.org/competitions/16910](https://www.codabench.org/competitions/16910/)
 
 ## Datasets
 
 The dataset contains Arabic memes annotated for hateful content detection. Each item includes the meme image, extracted text, and the task labels. The released training, development, and test splits will be the authoritative source for all counts and labels.
-
-| Split | Hateful labels | Not hateful labels | Total label assignments |
-| --- | ---: | ---: | ---: |
-| Train | 1,717 | 2,177 | 3,894 |
-| Development | 263 | 312 | 575 |
-| Test | 493 | 761 | 1,254 |
-
-Counts are label assignments because a meme may have more than one fine-grained label.
 
 ## Evaluation
 

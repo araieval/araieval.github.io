@@ -55,16 +55,14 @@ Harm domains include self-harm, harm to others, harassment, adult content, bully
 
 ## Leaderboard
 
-The leaderboard will be linked here when the official submission platform is released.
+The CodaBench competitions for Task 2 are open for participation:
+
+- **Subtask 2A (Binary):** [codabench.org/competitions/16652](https://www.codabench.org/competitions/16652/)
+- **Subtask 2B (Granular):** [codabench.org/competitions/16653](https://www.codabench.org/competitions/16653/)
 
 ## Datasets
 
-The dataset contains Arabic prompts annotated for safety evaluation. The proposal reports 25,071 prompts overall; the released data will be the authoritative source for final split sizes and labels.
-
-| Category | Train | Development | Test | Total |
-| --- | ---: | ---: | ---: | ---: |
-| Safe | 2,789 | 348 | 350 | 3,487 |
-| Unsafe | 17,267 | 2,158 | 2,161 | 21,586 |
+The dataset contains Arabic prompts annotated for safety evaluation. The released data will be the authoritative source for final split sizes and labels.
 
 ## Evaluation
 

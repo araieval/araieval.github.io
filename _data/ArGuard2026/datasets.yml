@@ -1,16 +1,39 @@
-- title: "Track A: fine-grained label assignments"
+- title: "Track A: Summary (Binary Labels)"
   headers:
-    - Class
+    - Set
+    - Train
+    - Dev
+    - Test
+    - Total
+  rows:
+    - ["Hateful", "1,717", "263", "493", "2,473"]
+    - ["Not Hateful", "2,177", "312", "761", "3,250"]
+    - ["<strong>Total</strong>", "<strong>3,894</strong>", "<strong>575</strong>", "<strong>1,254</strong>", "<strong>5,723</strong>"]
+  note: Binary high-level distribution of label assignments in the 5K meme dataset.
+
+- title: "Track A: Fine-Grained (Multilabel)"
+  headers:
+    - Label
     - Train
     - Dev
     - Test
   rows:
-    - ["Hateful labels", "1,717", "263", "493"]
-    - ["Not hateful labels", "2,177", "312", "761"]
-    - ["Total label assignments", "3,894", "575", "1,254"]
-  note: Counts are label assignments because each meme may have more than one fine-grained label.
+    - ["<em>Hateful Categories</em>", "", "", ""]
+    - ["Mocking", "706", "90", "211"]
+    - ["Incitement", "320", "51", "85"]
+    - ["Dehumanization", "247", "42", "58"]
+    - ["Slurs", "252", "42", "47"]
+    - ["Contempt", "107", "18", "50"]
+    - ["Inferiority", "57", "14", "32"]
+    - ["Exclusion", "10", "4", "3"]
+    - ["Other (Hateful)", "18", "2", "7"]
+    - ["<em>Not Hateful Categories</em>", "", "", ""]
+    - ["Sarcasm", "934", "126", "333"]
+    - ["Humor", "863", "136", "332"]
+    - ["Other (Not Hateful)","380", "50", "96"]
+  note: Breakdown of fine-grained categories. A single meme often exhibits multiple instances, hence why fine-grained counts exceed the dataset size.
 
-- title: "Track B: prompt classification"
+- title: "Track B: Prompt Safety (Subtask B1)"
   headers:
     - Category
     - Train
@@ -20,4 +43,22 @@
   rows:
     - ["Safe", "2,789", "348", "350", "3,487"]
     - ["Unsafe", "17,267", "2,158", "2,161", "21,586"]
-  note: The proposal reports 25,071 prompts overall; released data will be the authoritative source.
+    - ["<strong>Total</strong>", "<strong>20,056</strong>", "<strong>2,506</strong>", "<strong>2,511</strong>", "<strong>25,073</strong>"]
+  note: Baseline classification distribution determining whether an LLM prompt request is safe or unsafe.
+
+- title: "Track B: Harmful Categories (Subtask B2)"
+  headers:
+    - Category
+    - Train
+    - Dev
+    - Test
+    - Total
+  rows:
+    - ["Adult Content", "5,249", "656", "656", "6,561"]
+    - ["Self-Harm", "3,932", "491", "492", "4,915"]
+    - ["Harming Others", "3,473", "434", "435", "4,342"]
+    - ["Harassment", "2,574", "322", "322", "3,218"]
+    - ["Fraud & Deception", "2,016", "252", "252", "2,520"]
+    - ["Bully", "1,734", "217", "217", "2,168"]
+    - ["Hate Speech", "1,078", "134", "135", "1,347"]
+  note: Complete taxonomy of unsafe prompts filtered by their specific harmful intent type.

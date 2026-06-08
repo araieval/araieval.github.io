@@ -78,47 +78,6 @@ layout: default
         </div>
       </section>
 
-      <section class="section data-band" aria-labelledby="data-title">
-        <div class="section-inner">
-          <div class="section-heading split">
-            <div>
-              <p class="eyebrow">Data</p>
-              <h2 id="data-title">Dataset summary</h2>
-            </div>
-            <p>{{ page.data_intro }}</p>
-          </div>
-
-          <div class="table-grid">
-            {% for table in site.data.ArGuard2026.datasets %}
-            <div class="table-panel">
-              <h3>{{ table.title }}</h3>
-              <div class="table-scroll" tabindex="0">
-                <table>
-                  <thead>
-                    <tr>
-                      {% for header in table.headers %}
-                      <th>{{ header }}</th>
-                      {% endfor %}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for row in table.rows %}
-                    <tr>
-                      {% for cell in row %}
-                      <td>{{ cell }}</td>
-                      {% endfor %}
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-              <p>{{ table.note }}</p>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="timeline" aria-labelledby="timeline-title">
         <div class="section-inner">
           <div class="section-heading split">
