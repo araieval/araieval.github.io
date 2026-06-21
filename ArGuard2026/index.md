@@ -20,10 +20,10 @@ nav:
   - label: Tasks
     url: "#tasks"
     children:
-      - label: Task 1
-        url: /ArGuard2026/task1/
-      - label: Task 2
-        url: /ArGuard2026/task2/
+      - label: Task A (Task 1)
+        url: /ArGuard2026/taskA/
+      - label: Task B (Task 2)
+        url: /ArGuard2026/taskB/
   - label: Timeline
     url: "#timeline"
   - label: Resources

@@ -1,6 +1,6 @@
 - kicker: Track A
   title: Multimodal Hateful Meme Detection
-  detail_url: /ArGuard2026/task1/
+  detail_url: /ArGuard2026/taskA/
   description: >-
     Systems receive an Arabic meme image with extracted text and predict whether
     the meme is hateful, then identify the fine-grained label set associated
@@ -17,7 +17,7 @@
 
 - kicker: Track B
   title: Textual Harmful Prompt Detection
-  detail_url: /ArGuard2026/task2/
+  detail_url: /ArGuard2026/taskB/
   accent: true
   description: >-
     Systems receive an Arabic prompt directed at an LLM and decide whether it is

@@ -1,14 +1,14 @@
 ---
 layout: arguard-task
-title: Task 1 | Multimodal Hateful Meme Detection
-heading: "Task 1: Multimodal Hateful Meme Detection"
-description: ArGuard Task 1 covers hateful content detection in Arabic memes.
-og_title: ArGuard Task 1 | Multimodal Hateful Meme Detection
+title: Task A (Task 1) | Multimodal Hateful Meme Detection
+heading: "Task A (Task 1): Multimodal Hateful Meme Detection"
+description: ArGuard Task A (Task 1) covers hateful content detection in Arabic memes.
+og_title: ArGuard Task A (Task 1) | Multimodal Hateful Meme Detection
 og_description: Hateful content detection in Arabic memes for the ArabicNLP 2026 ArGuard shared task.
-og_url: https://araieval.github.io/ArGuard2026/task1/
+og_url: https://araieval.github.io/ArGuard2026/taskA/
 og_image: https://araieval.github.io/ArGuard2026/assets/images/arguard-hero.png
-canonical_url: https://araieval.github.io/ArGuard2026/task1/
-permalink: /ArGuard2026/task1/
+canonical_url: https://araieval.github.io/ArGuard2026/taskA/
+permalink: /ArGuard2026/taskA/
 favicon: /ArGuard2026/favicon.ico
 stylesheet: /ArGuard2026/assets/css/styles.css
 script: /ArGuard2026/assets/js/main.js
@@ -25,10 +25,10 @@ nav:
   - label: Tasks
     url: /ArGuard2026/#tasks
     children:
-      - label: Task 1
-        url: /ArGuard2026/task1/
-      - label: Task 2
-        url: /ArGuard2026/task2/
+      - label: Task A (Task 1)
+        url: /ArGuard2026/taskA/
+      - label: Task B (Task 2)
+        url: /ArGuard2026/taskB/
   - label: Timeline
     url: /ArGuard2026/#timeline
   - label: Resources
@@ -42,23 +42,23 @@ footer_text: "&copy; 2026 ArAIEval. Hosted on GitHub Pages."
 
 ## Definition
 
-Task 1 focuses on multimodal harmful content detection in Arabic memes. Given a meme image and its extracted Arabic text, systems identify whether the meme is hateful and, when applicable, predict the fine-grained hateful content categories.
+Task A (Task 1) focuses on multimodal harmful content detection in Arabic memes. Given a meme image and its extracted Arabic text, systems identify whether the meme is hateful and, when applicable, predict the fine-grained hateful content categories.
 
 The task is designed for Arabic-specific multimodal challenges, including dialectal language, code-switching, sarcasm, image-text interaction, cultural references, and visually implied targets.
 
 ## Subtasks
 
-- **Subtask 1A:** Given an Arabic meme, classify it as **Hateful** or **Not Hateful**.
-- **Subtask 1B:** Given an Arabic hateful meme, assign the relevant fine-grained hateful content categories.
+- **Subtask A1:** Given an Arabic meme, classify it as **Hateful** or **Not Hateful**.
+- **Subtask A2:** Given an Arabic hateful meme, assign the relevant fine-grained hateful content categories.
 
 Fine-grained labels include mocking, incitement, dehumanization, slurs, contempt, inferiority, exclusion, stereotyping, extremism, threat, insults, historical references, humor, sarcasm, and other categories.
 
 ## Leaderboard
 
-The CodaBench competitions for Task 1 are open for participation:
+The CodaBench competitions for Task A (Task 1) are open for participation:
 
-- **Subtask 1A (Binary):** [codabench.org/competitions/16909](https://www.codabench.org/competitions/16909/)
-- **Subtask 1B (Fine-Grained):** [codabench.org/competitions/16910](https://www.codabench.org/competitions/16910/)
+- **Subtask A1 (Binary):** [codabench.org/competitions/16909](https://www.codabench.org/competitions/16909/)
+- **Subtask A2 (Fine-Grained):** [codabench.org/competitions/16910](https://www.codabench.org/competitions/16910/)
 
 ## Datasets
 
@@ -68,7 +68,7 @@ The dataset contains Arabic memes annotated for hateful content detection. Each 
 
 The official metric is **macro-F1**. Accuracy, macro-precision, macro-recall, and weighted F1 may also be reported for analysis.
 
-Subtask 1A is evaluated as binary classification. Subtask 1B is evaluated as fine-grained category prediction.
+Subtask A1 is evaluated as binary classification. Subtask A2 is evaluated as fine-grained category prediction.
 
 ## Submission
 

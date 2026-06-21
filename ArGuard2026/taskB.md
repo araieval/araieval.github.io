@@ -1,14 +1,14 @@
 ---
 layout: arguard-task
-title: Task 2 | Textual Harmful Prompt Detection
-heading: "Task 2: Textual Harmful Prompt Detection"
-description: ArGuard Task 2 covers harmful Arabic prompt detection for LLM safety evaluation.
-og_title: ArGuard Task 2 | Textual Harmful Prompt Detection
+title: Task B (Task 2) | Textual Harmful Prompt Detection
+heading: "Task B (Task 2): Textual Harmful Prompt Detection"
+description: ArGuard Task B (Task 2) covers harmful Arabic prompt detection for LLM safety evaluation.
+og_title: ArGuard Task B (Task 2) | Textual Harmful Prompt Detection
 og_description: Harmful Arabic prompt detection for the ArabicNLP 2026 ArGuard shared task.
-og_url: https://araieval.github.io/ArGuard2026/task2/
+og_url: https://araieval.github.io/ArGuard2026/taskB/
 og_image: https://araieval.github.io/ArGuard2026/assets/images/arguard-hero.png
-canonical_url: https://araieval.github.io/ArGuard2026/task2/
-permalink: /ArGuard2026/task2/
+canonical_url: https://araieval.github.io/ArGuard2026/taskB/
+permalink: /ArGuard2026/taskB/
 favicon: /ArGuard2026/favicon.ico
 stylesheet: /ArGuard2026/assets/css/styles.css
 script: /ArGuard2026/assets/js/main.js
@@ -25,10 +25,10 @@ nav:
   - label: Tasks
     url: /ArGuard2026/#tasks
     children:
-      - label: Task 1
-        url: /ArGuard2026/task1/
-      - label: Task 2
-        url: /ArGuard2026/task2/
+      - label: Task A (Task 1)
+        url: /ArGuard2026/taskA/
+      - label: Task B (Task 2)
+        url: /ArGuard2026/taskB/
   - label: Timeline
     url: /ArGuard2026/#timeline
   - label: Resources
@@ -42,23 +42,23 @@ footer_text: "&copy; 2026 ArAIEval. Hosted on GitHub Pages."
 
 ## Definition
 
-Task 2 focuses on textual harmful prompt detection for Arabic LLM safety evaluation. Given an Arabic prompt directed at an LLM, systems determine whether the prompt is safe or unsafe and, when unsafe, identify the harm category.
+Task B (Task 2) focuses on textual harmful prompt detection for Arabic LLM safety evaluation. Given an Arabic prompt directed at an LLM, systems determine whether the prompt is safe or unsafe and, when unsafe, identify the harm category.
 
 The task targets Arabic safety risks in prompts, including direct harmful requests, indirect or disguised unsafe requests, dialectal phrasing, and prompts that require careful interpretation of intent.
 
 ## Subtasks
 
-- **Subtask 2A:** Given an Arabic prompt, classify it as **Safe** or **Unsafe**.
-- **Subtask 2B:** Given an unsafe Arabic prompt, classify it into the relevant harm domain.
+- **Subtask B1:** Given an Arabic prompt, classify it as **Safe** or **Unsafe**.
+- **Subtask B2:** Given an unsafe Arabic prompt, classify it into the relevant harm domain.
 
 Harm domains include self-harm, harm to others, harassment, adult content, bullying, hate speech, and fraud or illegal activities.
 
 ## Leaderboard
 
-The CodaBench competitions for Task 2 are open for participation:
+The CodaBench competitions for Task B (Task 2) are open for participation:
 
-- **Subtask 2A (Binary):** [codabench.org/competitions/16652](https://www.codabench.org/competitions/16652/)
-- **Subtask 2B (Granular):** [codabench.org/competitions/16653](https://www.codabench.org/competitions/16653/)
+- **Subtask B1 (Binary):** [codabench.org/competitions/16652](https://www.codabench.org/competitions/16652/)
+- **Subtask B2 (Granular):** [codabench.org/competitions/16653](https://www.codabench.org/competitions/16653/)
 
 ## Datasets
 
@@ -68,7 +68,7 @@ The dataset contains Arabic prompts annotated for safety evaluation. The release
 
 The official metric is **macro-F1**. Accuracy, macro-precision, macro-recall, and weighted F1 may also be reported for analysis.
 
-Subtask 2A is evaluated as binary classification. Subtask 2B is evaluated as harm-category classification.
+Subtask B1 is evaluated as binary classification. Subtask B2 is evaluated as harm-category classification.
 
 ## Submission
 
