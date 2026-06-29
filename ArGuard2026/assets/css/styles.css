@@ -409,69 +409,50 @@ p {
 }
 
 /* ---- per-card accent (matches the existing track-card palette) ---- */
-.lf-card.accent-teal,  .lf-tab.accent-teal  { --accent: var(--teal);  --accent-dark: var(--teal-dark); --accent-soft: rgba(15,118,110,0.10); --accent-tint: rgba(15,118,110,0.06); }
-.lf-card.accent-coral, .lf-tab.accent-coral { --accent: var(--coral); --accent-dark: #8a2c08;          --accent-soft: rgba(194,65,12,0.10);  --accent-tint: rgba(194,65,12,0.06); }
-.lf-card.accent-amber, .lf-tab.accent-amber { --accent: var(--amber); --accent-dark: #a55300;          --accent-soft: rgba(217,119,6,0.12);  --accent-tint: rgba(217,119,6,0.06); }
+.live-track-card.accent-teal  { --accent: var(--teal);  --accent-dark: var(--teal-dark); --accent-soft: rgba(15,118,110,0.10); --accent-tint: rgba(15,118,110,0.06); }
+.live-track-card.accent-coral { --accent: var(--coral); --accent-dark: #8a2c08;          --accent-soft: rgba(194,65,12,0.10);  --accent-tint: rgba(194,65,12,0.06); }
+.live-track-card.accent-amber { --accent: var(--amber); --accent-dark: #a55300;          --accent-soft: rgba(217,119,6,0.12);  --accent-tint: rgba(217,119,6,0.06); }
 
-/* ---- live feed layout ---------------------------------------------- */
-.live-feed {
+/* ---- grid ----------------------------------------------------------- */
+.live-tracks {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 1fr);
-  gap: 22px;
-  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
-@media (max-width: 880px) {
-  .live-feed { grid-template-columns: 1fr; }
-  .live-feed-tabs {
-    flex-direction: row;
-    overflow-x: auto;
-    margin: 0 -16px;
-    padding: 0 16px 4px;
-    scroll-snap-type: x mandatory;
-  }
-  .live-feed-tabs li { scroll-snap-align: start; flex: 0 0 220px; }
-  .lf-tab { padding: 12px 14px 16px; }
-  .lf-tab:hover, .lf-tab:focus-visible { transform: translateY(-2px); }
+@media (max-width: 980px) {
+  .live-tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* ---- featured pane (cards stack, only one is active at a time) ----- */
-.live-feed-featured {
-  position: relative;
-  display: grid;
-  min-height: 360px;
+@media (max-width: 640px) {
+  .live-tracks { grid-template-columns: 1fr; }
 }
 
-.live-feed-featured > .lf-card {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.lf-card {
+/* ---- card ----------------------------------------------------------- */
+.live-track-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 28px 28px 24px 34px;
+  padding: 24px 24px 22px 30px;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px) scale(.995);
-  transition: opacity 360ms ease, transform 480ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 360ms;
+  transition: transform 320ms cubic-bezier(.2,.7,.2,1),
+              box-shadow 320ms ease,
+              border-color 320ms ease;
 }
 
-.lf-card[data-active] {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition: opacity 420ms ease, transform 480ms cubic-bezier(.2,.7,.2,1), visibility 0s;
+.live-track-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-/* left accent stripe */
-.lf-card::before {
+.live-track-card::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
@@ -480,49 +461,67 @@ p {
   z-index: 2;
 }
 
-/* corner glow */
-.lf-card::after {
+.live-track-card::after {
   content: "";
   position: absolute;
-  top: 0; right: 0;
-  width: 60%;
+  top: 0;
+  right: 0;
+  width: 70%;
   height: 100%;
   pointer-events: none;
   background: radial-gradient(ellipse 80% 60% at 100% 0%, var(--accent-soft), transparent 70%);
-  opacity: 0.85;
+  opacity: 0.75;
+  transition: opacity 320ms ease;
   z-index: 0;
 }
 
+.live-track-card:hover,
+.live-track-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.live-track-card:hover::after,
+.live-track-card:focus-within::after {
+  opacity: 1;
+}
+
 /* big watermark letter */
-.lf-letter {
+.lt-letter {
   position: absolute;
   top: 0;
-  right: 16px;
-  font-size: 170px;
+  right: 10px;
+  font-size: 150px;
   font-weight: 820;
   line-height: 1;
   letter-spacing: -0.06em;
   color: var(--accent);
   opacity: 0.08;
   pointer-events: none;
+  transition: opacity 360ms ease, transform 360ms cubic-bezier(.2,.7,.2,1);
   z-index: 0;
 }
 
-.lf-header {
+.live-track-card:hover .lt-letter,
+.live-track-card:focus-within .lt-letter {
+  opacity: 0.14;
+  transform: translateY(-2px) rotate(-2deg);
+}
+
+.lt-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  position: relative;
-  z-index: 1;
   margin-bottom: 12px;
 }
 
-.lf-status {
+.lt-status {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 12px 3px 8px;
+  padding: 3px 10px 3px 8px;
   background: var(--accent-soft);
   color: var(--accent-dark);
   border-radius: 999px;
@@ -532,7 +531,7 @@ p {
   text-transform: uppercase;
 }
 
-.lf-pulse {
+.lt-pulse {
   display: inline-block;
   width: 7px;
   height: 7px;
@@ -542,7 +541,7 @@ p {
   animation: live-pulse 1.8s ease-out infinite;
 }
 
-.lf-kicker {
+.lt-kicker {
   margin-left: auto;
   color: var(--muted);
   font-size: 11px;
@@ -551,53 +550,48 @@ p {
   text-transform: uppercase;
 }
 
-.lf-title {
-  position: relative;
-  z-index: 1;
+.lt-title {
   margin: 0 0 8px;
   color: var(--ink);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 820;
-  line-height: 1.16;
+  line-height: 1.2;
   letter-spacing: -0.012em;
 }
 
-.lf-blurb {
-  position: relative;
-  z-index: 1;
+.lt-blurb {
   margin: 0;
   color: #475360;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
-.lf-bullets {
-  position: relative;
-  z-index: 1;
+/* bullets */
+.lt-bullets {
   display: grid;
   gap: 10px;
   padding: 0;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   list-style: none;
 }
 
-.lf-bullets li {
+.lt-bullets li {
   display: grid;
   grid-template-columns: 22px 1fr;
   gap: 10px;
   align-items: start;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.45;
 }
 
-.lf-bullets li em {
+.lt-bullets li em {
   color: var(--accent-dark);
   font-style: normal;
   font-weight: 700;
 }
 
-.lf-check {
+.lt-check {
   display: grid;
   place-items: center;
   width: 22px;
@@ -607,30 +601,29 @@ p {
   color: var(--accent-dark);
   flex-shrink: 0;
   margin-top: 1px;
-  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
 }
 
-.lf-check svg { width: 12px; height: 12px; display: block; }
+.lt-check svg { width: 12px; height: 12px; display: block; }
 
-.lf-card[data-active]:hover .lf-check {
+.live-track-card:hover .lt-check {
   background: var(--accent);
   color: white;
   transform: scale(1.08);
 }
 
-.lf-cta {
-  position: relative;
-  z-index: 1;
+/* CTA pill */
+.lt-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   align-self: flex-start;
   margin-top: 22px;
-  padding: 11px 22px;
+  padding: 11px 20px;
   background: var(--accent);
   color: white;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 0.01em;
   text-decoration: none;
@@ -641,138 +634,22 @@ p {
               background 220ms ease;
 }
 
-.lf-cta:hover,
-.lf-cta:focus-visible {
+.lt-cta:hover,
+.lt-cta:focus-visible {
   background: var(--accent-dark);
   transform: translateY(-1px);
   box-shadow: 0 12px 24px var(--accent-soft);
   outline: none;
 }
 
-.lf-arrow {
+.lt-arrow {
   display: inline-block;
-  transition: transform 220ms cubic-bezier(.2,.7,.2,1);
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1);
 }
 
-.lf-cta:hover .lf-arrow,
-.lf-cta:focus-visible .lf-arrow {
+.lt-cta:hover .lt-arrow,
+.lt-cta:focus-visible .lt-arrow {
   transform: translateX(4px);
-}
-
-/* ---- tabs (right rail) -------------------------------------------- */
-.live-feed-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.lf-tab {
-  position: relative;
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 14px 16px 18px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  text-align: left;
-  font: inherit;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 240ms cubic-bezier(.2,.7,.2,1),
-              border-color 240ms ease,
-              box-shadow 240ms ease,
-              background 240ms ease;
-}
-
-.lf-tab:hover,
-.lf-tab:focus-visible {
-  transform: translateX(-3px);
-  border-color: var(--accent);
-  box-shadow: 0 10px 22px var(--accent-soft);
-  outline: none;
-}
-
-.lf-tab[aria-selected="true"] {
-  background: linear-gradient(180deg, var(--paper) 0%, var(--accent-tint) 100%);
-  border-color: var(--accent);
-  box-shadow: 0 14px 28px var(--accent-soft);
-}
-
-.lf-tab-mark {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-  font-size: 13px;
-  font-weight: 820;
-  letter-spacing: -0.02em;
-  transition: background 240ms ease, color 240ms ease, transform 240ms ease;
-}
-
-.lf-tab[aria-selected="true"] .lf-tab-mark {
-  background: var(--accent);
-  color: white;
-  transform: rotate(-4deg) scale(1.04);
-}
-
-.lf-tab-text {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.lf-tab-kicker {
-  color: var(--accent-dark);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.lf-tab-title {
-  color: var(--ink);
-  font-size: 13.5px;
-  font-weight: 700;
-  line-height: 1.3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-/* progress fill */
-.lf-tab-progress {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 8px;
-  height: 2px;
-  background: var(--line);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.lf-tab-progress-fill {
-  display: block;
-  width: 0%;
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 120ms linear;
-}
-
-.lf-tab[aria-selected="true"] .lf-tab-progress {
-  background: var(--accent-tint);
 }
 
 /* reveal-on-scroll */
@@ -788,18 +665,16 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .live-dot, .lf-pulse { animation: none; }
+  .live-dot, .lt-pulse { animation: none; }
   [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .lf-card,
-  .lf-letter,
-  .lf-arrow,
-  .lf-check,
-  .lf-tab,
-  .lf-tab-progress-fill {
+  .live-track-card,
+  .lt-letter,
+  .lt-arrow,
+  .lt-check {
     transition: none;
   }
 }

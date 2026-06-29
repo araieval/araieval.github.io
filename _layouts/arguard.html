@@ -55,31 +55,26 @@ layout: default
           <header class="updates-header">
             <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Live updates</p>
             <h2 id="updates-title">What&rsquo;s happening right now</h2>
-            <p class="updates-sub">A live feed of the shared task. Cards rotate every few seconds &mdash; or click a tab to jump.</p>
+            <p class="updates-sub">Latest releases and announcements from the organizers.</p>
           </header>
 
-          <div class="live-feed" data-live-feed role="region" aria-label="Live updates carousel" aria-roledescription="carousel">
-            <div class="live-feed-featured" aria-live="polite">
-              {% for update in site.data.ArGuard2026.updates %}
-              <article class="lf-card accent-{{ update.accent }}"
-                       data-index="{{ forloop.index0 }}"
-                       role="group"
-                       aria-roledescription="slide"
-                       aria-label="{{ forloop.index }} of {{ site.data.ArGuard2026.updates.size }}"
-                       {% if forloop.first %}data-active{% endif %}>
-                <span class="lf-letter" aria-hidden="true">{{ update.letter }}</span>
-                <header class="lf-header">
-                  <span class="lf-status"><span class="lf-pulse" aria-hidden="true"></span> Live</span>
-                  <span class="lf-kicker">{{ update.kicker }}</span>
+          <div class="live-tracks">
+            {% for update in site.data.ArGuard2026.updates %}
+            <article class="live-track-card accent-{{ update.accent }}" data-reveal>
+              <span class="lt-letter" aria-hidden="true">{{ update.letter }}</span>
+              <div class="live-track-body">
+                <header class="lt-header">
+                  <span class="lt-status"><span class="lt-pulse" aria-hidden="true"></span> {{ update.status | default: 'Live' }}</span>
+                  <span class="lt-kicker">{{ update.kicker }}</span>
                 </header>
-                <h3 class="lf-title">{{ update.title }}</h3>
-                <p class="lf-blurb">{{ update.blurb }}</p>
+                <h3 class="lt-title">{{ update.title }}</h3>
+                <p class="lt-blurb">{{ update.blurb }}</p>
 
                 {% if update.bullets and update.bullets.size > 0 %}
-                <ul class="lf-bullets" role="list">
+                <ul class="lt-bullets" role="list">
                   {% for bullet in update.bullets %}
                   <li>
-                    <span class="lf-check" aria-hidden="true">
+                    <span class="lt-check" aria-hidden="true">
                       <svg viewBox="0 0 16 16" focusable="false">
                         <path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
@@ -90,33 +85,13 @@ layout: default
                 </ul>
                 {% endif %}
 
-                <a class="lf-cta" href="{% if update.cta_url contains '://' %}{{ update.cta_url }}{% else %}{{ update.cta_url | relative_url }}{% endif %}">
+                <a class="lt-cta" href="{% if update.cta_url contains '://' %}{{ update.cta_url }}{% else %}{{ update.cta_url | relative_url }}{% endif %}">
                   {{ update.cta }}
-                  <span class="lf-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="lt-arrow" aria-hidden="true">&rarr;</span>
                 </a>
-              </article>
-              {% endfor %}
-            </div>
-
-            <ol class="live-feed-tabs" role="tablist" aria-label="Live updates">
-              {% for update in site.data.ArGuard2026.updates %}
-              <li>
-                <button type="button"
-                        class="lf-tab accent-{{ update.accent }}"
-                        data-target="{{ forloop.index0 }}"
-                        role="tab"
-                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-                        aria-controls="lf-card-{{ forloop.index0 }}">
-                  <span class="lf-tab-mark" aria-hidden="true">{{ update.letter }}</span>
-                  <span class="lf-tab-text">
-                    <span class="lf-tab-kicker">{{ update.side_kicker }}</span>
-                    <span class="lf-tab-title">{{ update.side_title }}</span>
-                  </span>
-                  <span class="lf-tab-progress" aria-hidden="true"><span class="lf-tab-progress-fill"></span></span>
-                </button>
-              </li>
-              {% endfor %}
-            </ol>
+              </div>
+            </article>
+            {% endfor %}
           </div>
         </div>
       </section>
