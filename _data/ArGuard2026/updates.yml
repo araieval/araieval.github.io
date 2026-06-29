@@ -1,23 +1,38 @@
-- track: A
-  letter: "A"
+- letter: "A"
   accent: teal
-  kicker: "Task A"
+  kicker: "Task A · Live now"
   title: "Multimodal Hateful Meme Detection"
   blurb: "Detect hateful Arabic memes from image + extracted text."
-  task_url: /ArGuard2026/taskA/
-  cta: "Open Task A"
   bullets:
     - "Dev dataset released with labels for local testing"
     - "Submit predictions on CodaBench (subtasks A1 & A2)"
+  cta: "Open Task A"
+  cta_url: /ArGuard2026/taskA/
+  side_kicker: "Task A"
+  side_title: "Submissions open on CodaBench"
 
-- track: B
-  letter: "B"
+- letter: "B"
   accent: coral
-  kicker: "Task B"
+  kicker: "Task B · Live now"
   title: "Harmful Prompt Detection"
   blurb: "Detect unsafe Arabic prompts directed at LLMs."
-  task_url: /ArGuard2026/taskB/
-  cta: "Open Task B"
   bullets:
     - "Dev dataset released with labels for local testing"
     - 'External datasets allowed for training (e.g., <em>AraSafe — Benchmarking Safety in Arabic LLMs</em>)'
+  cta: "Open Task B"
+  cta_url: /ArGuard2026/taskB/
+  side_kicker: "Task B"
+  side_title: "Submissions open on CodaBench"
+
+- letter: "HF"
+  accent: amber
+  kicker: "Hugging Face · New release"
+  title: "ArGuard Task 1 dataset released"
+  blurb: "Training, development, and dev-test splits are live on the Hugging Face Hub."
+  bullets:
+    - "QCRI/ArGuard-Task1 is publicly available"
+    - "Dev split ships with gold labels for local evaluation"
+  cta: "Browse on Hugging Face"
+  cta_url: "https://huggingface.co/datasets/QCRI/ArGuard-Task1"
+  side_kicker: "Dataset"
+  side_title: "QCRI/ArGuard-Task1 on Hugging Face"
