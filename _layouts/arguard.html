@@ -53,68 +53,42 @@ layout: default
       <section class="section updates-band" id="updates" aria-labelledby="updates-title">
         <div class="section-inner updates-inner">
           <header class="updates-header">
-            <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Recent updates</p>
-            <h2 id="updates-title">What&rsquo;s new</h2>
-            <p class="updates-sub">Milestones from the organizers as the shared task unfolds.</p>
+            <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Live now</p>
+            <h2 id="updates-title">Submissions are open on CodaBench</h2>
+            <p class="updates-sub">Both tracks are live for the development phase. Pick a track to start submitting.</p>
           </header>
 
-          <ol class="timeline" role="list">
+          <div class="live-tracks">
             {% for update in site.data.ArGuard2026.updates %}
-            <li class="timeline-item{% if update.tag %} tag-{{ update.tag }}{% endif %}"
-                data-reveal>
-              <span class="timeline-marker" aria-hidden="true">
-                <span class="timeline-marker-core"></span>
-              </span>
-
-              <article class="timeline-card">
-                <div class="timeline-datestamp" aria-hidden="true">
-                  <span class="ds-month">{{ update.month }}</span>
-                  <span class="ds-day">{{ update.day }}</span>
-                  <span class="ds-year">{{ update.year }}</span>
-                </div>
-
-                <div class="timeline-content">
-                  <header class="timeline-meta">
-                    <time datetime="{{ update.datetime }}" class="visually-hidden">{{ update.month }} {{ update.day }}, {{ update.year }}</time>
-                    {% if update.tag %}
-                    <span class="timeline-tag tag-{{ update.tag }}">
-                      {% if update.tag == 'live' %}<span class="tag-pulse" aria-hidden="true"></span>{% endif %}
-                      {{ update.tag }}
-                    </span>
-                    {% endif %}
-                    {% case update.icon %}
-                    {% when 'rocket' %}
-                    <svg class="timeline-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M13.5 3.5c4 0 7 3 7 7-2 1-3 2.5-3.5 4.5l-1 4-4-1-1-4c-2-.5-3.5-1.5-4.5-3.5-1-2 2-7 7-7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                      <circle cx="14.5" cy="9.5" r="1.5" fill="currentColor"/>
-                      <path d="M8 16l-3 3M9.5 17.5l-2 2M7 14.5l-2 .5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                    {% when 'dataset' %}
-                    <svg class="timeline-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <ellipse cx="12" cy="6" rx="8" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                      <path d="M4 6v6c0 1.4 3.6 2.6 8 2.6s8-1.2 8-2.6V6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                      <path d="M4 12v6c0 1.4 3.6 2.6 8 2.6s8-1.2 8-2.6v-6" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                    </svg>
-                    {% else %}
-                    <svg class="timeline-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                      <path d="M12 8v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                    {% endcase %}
-                  </header>
-                  <h3 class="timeline-title">{{ update.title }}</h3>
-                  <p class="timeline-body">{{ update.body }}</p>
-                  {% if update.link %}
-                  <a class="timeline-link" href="{{ update.link.url }}">
-                    {{ update.link.label }}
-                    <span class="timeline-arrow" aria-hidden="true">&rarr;</span>
+            <article class="live-track-card accent-{{ update.accent }}" data-reveal>
+              <a class="live-track-main" href="{{ update.task_url | relative_url }}"
+                 aria-label="Open Track {{ update.letter }} — {{ update.title }} task page">
+                <span class="lt-letter" aria-hidden="true">{{ update.letter }}</span>
+                <header class="lt-header">
+                  <span class="lt-status"><span class="lt-pulse" aria-hidden="true"></span> Live on CodaBench</span>
+                  <span class="lt-kicker">Track {{ update.letter }}</span>
+                </header>
+                <h3 class="lt-title">{{ update.title }}</h3>
+                <p class="lt-blurb">{{ update.blurb }}</p>
+                <span class="lt-detail">
+                  Task details
+                  <span class="lt-arrow" aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
+              <ul class="lt-subtasks" role="list">
+                {% for st in update.subtasks %}
+                <li>
+                  <a class="lt-sub" href="{{ st.url }}" rel="noopener">
+                    <span class="lt-sub-code">{{ st.code }}</span>
+                    <span class="lt-sub-name">{{ st.name }}</span>
+                    <span class="lt-sub-arrow" aria-hidden="true">&#8599;</span>
                   </a>
-                  {% endif %}
-                </div>
-              </article>
-            </li>
+                </li>
+                {% endfor %}
+              </ul>
+            </article>
             {% endfor %}
-          </ol>
+          </div>
         </div>
       </section>
       {% endif %}

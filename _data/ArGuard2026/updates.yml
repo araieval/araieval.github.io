@@ -1,27 +1,19 @@
-- day: "22"
-  month: "Jun"
-  year: "2026"
-  datetime: "2026-06-22"
-  tag: live
-  icon: rocket
-  title: "Development phase is live"
-  body: >-
-    The dev_test leaderboards are open on CodaBench for both subtasks.
-    Submit predictions and start climbing the board.
-  link:
-    label: "Open CodaBench"
-    url: "https://www.codabench.org/competitions/16909/"
+- track: A
+  letter: "A"
+  accent: teal
+  title: "Multimodal Hateful Meme Detection"
+  blurb: "Detect hateful Arabic memes from image + extracted text."
+  task_url: /ArGuard2026/taskA/
+  subtasks:
+    - { code: "A1", name: "Binary",       url: "https://www.codabench.org/competitions/16909/" }
+    - { code: "A2", name: "Fine-grained", url: "https://www.codabench.org/competitions/16910/" }
 
-- day: "22"
-  month: "Jun"
-  year: "2026"
-  datetime: "2026-06-22"
-  tag: new
-  icon: dataset
-  title: "Official splits released"
-  body: >-
-    Training, development, and dev-test splits are available at
-    QCRI/ArGuard-Task1 on the Hugging Face Hub.
-  link:
-    label: "Browse dataset"
-    url: "https://huggingface.co/datasets/QCRI/ArGuard-Task1"
+- track: B
+  letter: "B"
+  accent: coral
+  title: "Harmful Prompt Detection"
+  blurb: "Detect unsafe Arabic prompts directed at LLMs."
+  task_url: /ArGuard2026/taskB/
+  subtasks:
+    - { code: "B1", name: "Binary",   url: "https://www.codabench.org/competitions/16652/" }
+    - { code: "B2", name: "Granular", url: "https://www.codabench.org/competitions/16653/" }
