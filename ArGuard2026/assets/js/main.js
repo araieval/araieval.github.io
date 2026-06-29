@@ -14,3 +14,13 @@ if (navToggle && navLinks) {
     }
   });
 }
+
+// Recent updates: click a header to expand/collapse its body.
+document.querySelectorAll(".update-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    const body = document.getElementById(btn.getAttribute("aria-controls"));
+    btn.setAttribute("aria-expanded", String(!expanded));
+    if (body) body.hidden = expanded;
+  });
+});

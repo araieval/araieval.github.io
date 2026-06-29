@@ -17,6 +17,8 @@ brand_subtitle: ArAIEval
 nav:
   - label: Overview
     url: "#overview"
+  - label: Updates
+    url: "#updates"
   - label: Tasks
     url: "#tasks"
     children:
