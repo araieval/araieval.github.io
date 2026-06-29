@@ -1,11 +1,27 @@
-- date: "Jun 22, 2026"
+- day: "22"
+  month: "Jun"
+  year: "2026"
   datetime: "2026-06-22"
   tag: live
-  title: "Development phase is open"
+  icon: rocket
+  title: "Development phase is live"
   body: >-
-    Participants can now download the official training, development, and
-    development-test splits and start building systems. The dev_test leaderboard
-    is live on CodaBench for both subtasks.
+    The dev_test leaderboards are open on CodaBench for both subtasks.
+    Submit predictions and start climbing the board.
   link:
-    label: Browse splits on Hugging Face
+    label: "Open CodaBench"
+    url: "https://www.codabench.org/competitions/16909/"
+
+- day: "22"
+  month: "Jun"
+  year: "2026"
+  datetime: "2026-06-22"
+  tag: new
+  icon: dataset
+  title: "Official splits released"
+  body: >-
+    Training, development, and dev-test splits are available at
+    QCRI/ArGuard-Task1 on the Hugging Face Hub.
+  link:
+    label: "Browse dataset"
     url: "https://huggingface.co/datasets/QCRI/ArGuard-Task1"
