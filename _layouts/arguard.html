@@ -53,39 +53,43 @@ layout: default
       <section class="section updates-band" id="updates" aria-labelledby="updates-title">
         <div class="section-inner updates-inner">
           <header class="updates-header">
-            <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Live now</p>
-            <h2 id="updates-title">Submissions are open on CodaBench</h2>
-            <p class="updates-sub">Both tracks are live for the development phase. Pick a track to start submitting.</p>
+            <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Submissions open</p>
+            <h2 id="updates-title">Pick a task &amp; start submitting</h2>
+            <p class="updates-sub">Both tasks are live for the development phase. Open a task page for full details and CodaBench links.</p>
           </header>
 
           <div class="live-tracks">
             {% for update in site.data.ArGuard2026.updates %}
             <article class="live-track-card accent-{{ update.accent }}" data-reveal>
-              <a class="live-track-main" href="{{ update.task_url | relative_url }}"
-                 aria-label="Open Track {{ update.letter }} — {{ update.title }} task page">
-                <span class="lt-letter" aria-hidden="true">{{ update.letter }}</span>
+              <span class="lt-letter" aria-hidden="true">{{ update.letter }}</span>
+              <div class="live-track-body">
                 <header class="lt-header">
-                  <span class="lt-status"><span class="lt-pulse" aria-hidden="true"></span> Live on CodaBench</span>
-                  <span class="lt-kicker">Track {{ update.letter }}</span>
+                  <span class="lt-status"><span class="lt-pulse" aria-hidden="true"></span> Submissions open</span>
+                  <span class="lt-kicker">{{ update.kicker }}</span>
                 </header>
                 <h3 class="lt-title">{{ update.title }}</h3>
                 <p class="lt-blurb">{{ update.blurb }}</p>
-                <span class="lt-detail">
-                  Task details
+
+                {% if update.bullets and update.bullets.size > 0 %}
+                <ul class="lt-bullets" role="list">
+                  {% for bullet in update.bullets %}
+                  <li>
+                    <span class="lt-check" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" focusable="false">
+                        <path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <span>{{ bullet }}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+
+                <a class="lt-cta" href="{{ update.task_url | relative_url }}">
+                  {{ update.cta }}
                   <span class="lt-arrow" aria-hidden="true">&rarr;</span>
-                </span>
-              </a>
-              <ul class="lt-subtasks" role="list">
-                {% for st in update.subtasks %}
-                <li>
-                  <a class="lt-sub" href="{{ st.url }}" rel="noopener">
-                    <span class="lt-sub-code">{{ st.code }}</span>
-                    <span class="lt-sub-name">{{ st.name }}</span>
-                    <span class="lt-sub-arrow" aria-hidden="true">&#8599;</span>
-                  </a>
-                </li>
-                {% endfor %}
-              </ul>
+                </a>
+              </div>
             </article>
             {% endfor %}
           </div>

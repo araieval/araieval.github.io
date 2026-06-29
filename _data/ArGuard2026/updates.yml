@@ -1,19 +1,23 @@
 - track: A
   letter: "A"
   accent: teal
+  kicker: "Task A"
   title: "Multimodal Hateful Meme Detection"
   blurb: "Detect hateful Arabic memes from image + extracted text."
   task_url: /ArGuard2026/taskA/
-  subtasks:
-    - { code: "A1", name: "Binary",       url: "https://www.codabench.org/competitions/16909/" }
-    - { code: "A2", name: "Fine-grained", url: "https://www.codabench.org/competitions/16910/" }
+  cta: "Open Task A"
+  bullets:
+    - "Dev dataset released with labels for local testing"
+    - "Submit predictions on CodaBench (subtasks A1 & A2)"
 
 - track: B
   letter: "B"
   accent: coral
+  kicker: "Task B"
   title: "Harmful Prompt Detection"
   blurb: "Detect unsafe Arabic prompts directed at LLMs."
   task_url: /ArGuard2026/taskB/
-  subtasks:
-    - { code: "B1", name: "Binary",   url: "https://www.codabench.org/competitions/16652/" }
-    - { code: "B2", name: "Granular", url: "https://www.codabench.org/competitions/16653/" }
+  cta: "Open Task B"
+  bullets:
+    - "Dev dataset released with labels for local testing"
+    - 'External datasets allowed for training (e.g., <em>AraSafe — Benchmarking Safety in Arabic LLMs</em>)'
