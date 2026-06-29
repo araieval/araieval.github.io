@@ -15,12 +15,21 @@ if (navToggle && navLinks) {
   });
 }
 
-// Recent updates: click a header to expand/collapse its body.
-document.querySelectorAll(".update-toggle").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const expanded = btn.getAttribute("aria-expanded") === "true";
-    const body = document.getElementById(btn.getAttribute("aria-controls"));
-    btn.setAttribute("aria-expanded", String(!expanded));
-    if (body) body.hidden = expanded;
-  });
-});
+// Recent updates: reveal-on-scroll for timeline items.
+const reveals = document.querySelectorAll("[data-reveal]");
+if (reveals.length) {
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${Math.min(i, 4) * 80}ms`;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-visible"));
+  }
+}

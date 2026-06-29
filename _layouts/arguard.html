@@ -51,37 +51,31 @@ layout: default
 
       {% if site.data.ArGuard2026.updates and site.data.ArGuard2026.updates.size > 0 %}
       <section class="section updates-band" id="updates" aria-labelledby="updates-title">
-        <div class="section-inner">
-          <div class="section-heading split">
-            <div>
-              <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Recent updates</p>
-              <h2 id="updates-title">What's new</h2>
-            </div>
-            <p>Latest news from the organizers — task milestones, data releases, leaderboard activity.</p>
-          </div>
+        <div class="section-inner updates-inner">
+          <header class="updates-header">
+            <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Recent updates</p>
+            <h2 id="updates-title">What&rsquo;s new</h2>
+          </header>
 
-          <ol class="updates-list" role="list">
+          <ol class="timeline" role="list">
             {% for update in site.data.ArGuard2026.updates %}
-            <li class="update-card{% if update.tag %} has-tag{% endif %}">
-              <button class="update-toggle" type="button"
-                      aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-                      aria-controls="update-{{ forloop.index }}">
-                <span class="update-meta">
+            <li class="timeline-item{% if update.tag %} tag-{{ update.tag }}{% endif %}"
+                data-reveal>
+              <span class="timeline-marker" aria-hidden="true"></span>
+              <article class="timeline-card">
+                <header class="timeline-meta">
                   <time datetime="{{ update.datetime }}">{{ update.date }}</time>
-                  {% if update.tag %}<span class="update-tag tag-{{ update.tag }}">{{ update.tag }}</span>{% endif %}
-                </span>
-                <span class="update-title">{{ update.title }}</span>
-                <span class="update-chevron" aria-hidden="true"></span>
-              </button>
-              <div class="update-body" id="update-{{ forloop.index }}"{% unless forloop.first %} hidden{% endunless %}>
-                <p>{{ update.body }}</p>
+                  {% if update.tag %}<span class="timeline-tag tag-{{ update.tag }}">{{ update.tag }}</span>{% endif %}
+                </header>
+                <h3 class="timeline-title">{{ update.title }}</h3>
+                <p class="timeline-body">{{ update.body }}</p>
                 {% if update.link %}
-                <a class="update-link" href="{{ update.link.url }}">
+                <a class="timeline-link" href="{{ update.link.url }}">
                   {{ update.link.label }}
-                  <span aria-hidden="true">&rarr;</span>
+                  <span class="timeline-arrow" aria-hidden="true">&rarr;</span>
                 </a>
                 {% endif %}
-              </div>
+              </article>
             </li>
             {% endfor %}
           </ol>
