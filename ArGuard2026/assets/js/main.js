@@ -15,6 +15,24 @@ if (navToggle && navLinks) {
   });
 }
 
+// Motto band: draw in the highlight bars when it enters the viewport.
+(function initMotto() {
+  const band = document.querySelector(".motto-band");
+  if (!band) return;
+  if (!("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    band.classList.add("is-visible");
+    return;
+  }
+  const io = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      band.classList.add("is-visible");
+      io.disconnect();
+    }
+  }, { threshold: 0.25 });
+  io.observe(band);
+})();
+
 // Reveal-on-scroll (used by other sections that opt in).
 const reveals = document.querySelectorAll("[data-reveal]");
 if (reveals.length) {
