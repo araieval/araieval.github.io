@@ -257,11 +257,15 @@ layout: default
           </div>
           <div class="organizer-grid">
             {% for organizer in site.data.ArGuard2026.organizers %}
-            <article>
-              <h3>{{ organizer.name }}</h3>
-              <p>{{ organizer.affiliation }}</p>
+              {% assign parts = organizer.name | split: ' ' %}
+              {% assign first_letter = parts | first | slice: 0 %}
+              {% assign last_letter = parts | last | slice: 0 %}
+            <article class="organizer-card">
+              <span class="organizer-avatar" aria-hidden="true">{{ first_letter }}{{ last_letter }}</span>
+              <h3 class="organizer-name">{{ organizer.name }}</h3>
+              <p class="organizer-aff">{{ organizer.affiliation }}</p>
               {% if organizer.email %}
-              <p><a href="mailto:{{ organizer.email }}">{{ organizer.email }}</a></p>
+              <a class="organizer-email" href="mailto:{{ organizer.email }}">{{ organizer.email }}</a>
               {% endif %}
             </article>
             {% endfor %}
@@ -272,7 +276,7 @@ layout: default
       {% if page.acknowledgments %}
       <section class="section acknowledgments-section" aria-labelledby="acknowledgments-title">
         <div class="section-inner acknowledgments-inner">
-          <div>
+          <div class="acknowledgments-copy">
             <p class="eyebrow">Acknowledgments</p>
             <h2 id="acknowledgments-title">{{ page.acknowledgments.title }}</h2>
             <p>{{ page.acknowledgments.text }}</p>
@@ -284,14 +288,12 @@ layout: default
 
       <section class="section contact-section" aria-labelledby="contact-title">
         <div class="section-inner contact-inner">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">{{ page.contact.title }}</h2>
-            <p>{{ page.contact.text }}</p>
-          </div>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">{{ page.contact.title }}</h2>
+          <p class="contact-copy">{{ page.contact.text }}</p>
           <div class="contact-actions">
-            <a class="button primary" href="mailto:araieval@googlegroups.com">Email Organizers</a>
-            <a class="button primary" href="https://join.slack.com/t/araieval/shared_invite/zt-20rzypxs7-LuHUsw8ltj7ylae9c4I7XQ">Slack</a>
+            <a class="button primary" href="mailto:araieval@googlegroups.com">Email organizers</a>
+            <a class="button secondary" href="https://join.slack.com/t/araieval/shared_invite/zt-20rzypxs7-LuHUsw8ltj7ylae9c4I7XQ">Join Slack</a>
           </div>
         </div>
       </section>
