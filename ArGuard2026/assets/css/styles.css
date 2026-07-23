@@ -786,8 +786,11 @@ p {
 }
 
 .motto-line { display: block; }
-.motto-line + .motto-line { margin-top: 4px; }
-.motto-line.motto-line-3 { color: #d5e3e1; }
+.motto-line + .motto-line { margin-top: 6px; }
+.motto-line-3 {
+  margin-top: 10px !important;
+  color: var(--paper);
+}
 
 .motto-hi {
   position: relative;

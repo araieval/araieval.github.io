@@ -1,29 +1,3 @@
-# Each motto: two lines with optional "hi" (highlighted) words that get an
-# animated underline in accent color (teal for line 1, coral for line 2).
-# Keep or remove entries freely — the carousel adapts.
-
-- line1: "Compete on the"
-  hi1: "leaderboard"
-  line1_tail: "."
-  line2: "Contribute in the"
-  hi2: "proceedings"
-  line2_tail: "."
-
-- line1: "Growing Arabic NLP"
-  hi1: "together"
-  line1_tail: ""
-  line2: "one system, one paper at a"
-  hi2: "time"
-  line2_tail: "."
-
-- line1: "Publish your system."
-  line2: "Grow the field."
-  line3: "Guard the language."
-
-- line1: "Submit a system."
-  line2: "Ship a paper."
-  line3: "Shape the field."
-
-- line1: "Rank fades."
+- line1: "Ranks fade."
   line2: "Papers stay."
-  line3: "The field grows."
+  line3: '<span class="motto-hi motto-hi-teal">Arabic NLP</span> grows &mdash; <span class="motto-hi motto-hi-coral">together</span>.'
