@@ -15,22 +15,56 @@ if (navToggle && navLinks) {
   });
 }
 
-// Motto band: draw in the highlight bars when it enters the viewport.
+// Motto carousel: cross-fades through a set of mottos, pause on hover / off-screen.
 (function initMotto() {
-  const band = document.querySelector(".motto-band");
+  const band = document.querySelector("[data-motto]");
   if (!band) return;
-  if (!("IntersectionObserver" in window) ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    band.classList.add("is-visible");
-    return;
+  const mottos = Array.from(band.querySelectorAll(".motto-headline"));
+  const dots = Array.from(band.querySelectorAll(".motto-dot"));
+  if (mottos.length <= 1) return;
+
+  const PERIOD_MS = 6500;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let current = 0;
+  let paused = false;
+  let onScreen = true;
+  let timer = null;
+
+  function show(i) {
+    current = (i + mottos.length) % mottos.length;
+    mottos.forEach((m, idx) => {
+      if (idx === current) m.setAttribute("data-active", "");
+      else m.removeAttribute("data-active");
+    });
+    dots.forEach((d, idx) => {
+      d.setAttribute("aria-selected", String(idx === current));
+    });
   }
-  const io = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      band.classList.add("is-visible");
-      io.disconnect();
-    }
-  }, { threshold: 0.25 });
-  io.observe(band);
+
+  function schedule() {
+    clearTimeout(timer);
+    if (reducedMotion || paused || !onScreen) return;
+    timer = setTimeout(() => { show(current + 1); schedule(); }, PERIOD_MS);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { show(i); schedule(); });
+  });
+
+  band.addEventListener("mouseenter", () => { paused = true;  clearTimeout(timer); });
+  band.addEventListener("mouseleave", () => { paused = false; schedule(); });
+  band.addEventListener("focusin",    () => { paused = true;  clearTimeout(timer); });
+  band.addEventListener("focusout",   () => { paused = false; schedule(); });
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      schedule();
+    }, { threshold: 0.25 }).observe(band);
+  }
+
+  show(0);
+  schedule();
 })();
 
 // Reveal-on-scroll (used by other sections that opt in).

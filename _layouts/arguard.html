@@ -49,6 +49,55 @@ layout: default
         </div>
       </section>
 
+      {% if site.data.ArGuard2026.mottos and site.data.ArGuard2026.mottos.size > 0 %}
+      <section class="section motto-band" aria-labelledby="motto-title" data-motto>
+        <div class="section-inner motto-inner">
+          <span class="motto-quote" aria-hidden="true">&ldquo;</span>
+          <p class="motto-eyebrow">The ArGuard invitation</p>
+
+          <h2 id="motto-title" class="visually-hidden">The ArGuard 2026 invitation</h2>
+
+          <div class="motto-stage" aria-live="polite">
+            {% for m in site.data.ArGuard2026.mottos %}
+            <p class="motto-headline"{% if forloop.first %} data-active{% endif %} data-index="{{ forloop.index0 }}">
+              <span class="motto-line">
+                {{ m.line1 }}{% if m.hi1 %} <span class="motto-hi motto-hi-teal">{{ m.hi1 }}</span>{% endif %}{{ m.line1_tail }}
+              </span>
+              {% if m.line2 %}
+              <span class="motto-line">
+                {{ m.line2 }}{% if m.hi2 %} <span class="motto-hi motto-hi-coral">{{ m.hi2 }}</span>{% endif %}{{ m.line2_tail }}
+              </span>
+              {% endif %}
+              {% if m.line3 %}
+              <span class="motto-line motto-line-3">{{ m.line3 }}</span>
+              {% endif %}
+            </p>
+            {% endfor %}
+          </div>
+
+          <p class="motto-sub">
+            Every system tells a story. Publish yours at
+            <strong>ArabicNLP&nbsp;2026</strong>, co-located with <strong>EMNLP</strong>.
+          </p>
+
+          {% if site.data.ArGuard2026.mottos.size > 1 %}
+          <div class="motto-nav" role="tablist" aria-label="Motto selector">
+            {% for m in site.data.ArGuard2026.mottos %}
+            <button type="button"
+                    class="motto-dot"
+                    role="tab"
+                    aria-label="Show motto {{ forloop.index }} of {{ site.data.ArGuard2026.mottos.size }}"
+                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                    data-target="{{ forloop.index0 }}"></button>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <span class="motto-rule" aria-hidden="true"></span>
+        </div>
+      </section>
+      {% endif %}
+
       {% if site.data.ArGuard2026.updates and site.data.ArGuard2026.updates.size > 0 %}
       <section class="section updates-band" id="updates" aria-labelledby="updates-title">
         <div class="section-inner updates-inner">
@@ -123,22 +172,6 @@ layout: default
             </article>
             {% endfor %}
           </div>
-        </div>
-      </section>
-
-      <section class="section motto-band" aria-labelledby="motto-title">
-        <div class="section-inner motto-inner">
-          <span class="motto-quote" aria-hidden="true">&ldquo;</span>
-          <p class="motto-eyebrow">The ArGuard invitation</p>
-          <h2 id="motto-title" class="motto-headline">
-            <span class="motto-line">Compete on the <span class="motto-hi motto-hi-teal">leaderboard</span>.</span>
-            <span class="motto-line">Contribute in the <span class="motto-hi motto-hi-coral">proceedings</span>.</span>
-          </h2>
-          <p class="motto-sub">
-            Every system tells a story. Publish yours at
-            <strong>ArabicNLP&nbsp;2026</strong>, co-located with <strong>EMNLP</strong>.
-          </p>
-          <span class="motto-rule" aria-hidden="true"></span>
         </div>
       </section>
 
